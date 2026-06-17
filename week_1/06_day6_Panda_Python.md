@@ -2,7 +2,7 @@
 
 ## 环境 ✅ 已提前完成
 
-MoveIt2 + Panda 仿真环境于 06.17 提前搭完，详见 [装ros.md](装ros.md)。
+MoveIt2 + Panda 仿真环境于 06.17 提前搭完，详见 [install_ros.md](install_ros.md)。
 
 ## 今天要做的
 

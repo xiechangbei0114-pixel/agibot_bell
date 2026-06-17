@@ -9,9 +9,9 @@
 | 1 | 机器人分类 | ⏳ | 分类脑图 |
 | 2 | 机械臂控制架构 | ⏳ | 四层架构图 |
 | 3 | ROS2核心概念 | ⏳ | 通信机制对比表 |
-| 4 | 安装环境（WSL2+ROS2） | ✅ | [装ros.md](装ros.md) |
+| 4 | 安装环境（WSL2+ROS2） | ✅ | [install_ros.md](install_ros.md) |
 | 5 | FK/IK概念 + 仿真工具 | ⏳ | 概念卡片 + 工具对比表 |
-| 6 | MoveIt2 + Panda + Python | ✅ | [装ros.md](装ros.md)（环境部分） |
+| 6 | MoveIt2 + Panda + Python | ✅ | [install_ros.md](install_ros.md)（环境部分） |
 | 7 | 每周复盘 | ⏳ | 机器人控制系统全景图 v1.0 |
 
 ## 本周通关标准
