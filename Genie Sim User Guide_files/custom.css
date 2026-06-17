@@ -1,0 +1,9 @@
+/* 修改正文字体大小 */
+.markdown-section {
+  font-size: 17px;
+}
+
+/* 修改侧边栏字体 */
+.sidebar {
+  font-size: 15px;
+}

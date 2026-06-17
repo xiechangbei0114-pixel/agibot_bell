@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_312-run-a-simulation-task -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Genie Sim User Guide</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="icon" href="https://agibot-world.cn/sim-evaluation/docs/public/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="./Genie Sim User Guide_files/custom.css">
+<style type="text/css">.docsify-copy-code-button,.docsify-copy-code-button>span{cursor:pointer;transition:all .25s ease}.docsify-copy-code-button{background:grey;background:var(--theme-color,grey);border:0;border-radius:0;color:#fff;font-size:1em;opacity:0;outline:0;overflow:visible;padding:.65em .8em;position:absolute;right:0;top:0;z-index:1}.docsify-copy-code-button>span{background:inherit;border-radius:3px;pointer-events:none}.docsify-copy-code-button>.error,.docsify-copy-code-button>.success{font-size:.825em;opacity:0;padding:.5em .65em;position:absolute;right:0;top:50%;transform:translateY(-50%);z-index:-100}.docsify-copy-code-button.error>.error,.docsify-copy-code-button.success>.success{opacity:1;right:100%;transform:translate(-25%,-50%)}.docsify-copy-code-button:focus,pre:hover .docsify-copy-code-button{opacity:1}.docsify-copy-code-button>[aria-live]{height:1px;left:-10000px;overflow:hidden;position:absolute;top:auto;width:1px}</style><style>
+.sidebar {
+  padding-top: 0;
+}
+
+.search {
+  margin-bottom: 20px;
+  padding: 6px;
+  border-bottom: 1px solid #eee;
+}
+
+.search .input-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.search .results-panel {
+  display: none;
+}
+
+.search .results-panel.show {
+  display: block;
+}
+
+.search input {
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 0.6em 7px;
+  font-size: inherit;
+  border: 1px solid transparent;
+}
+
+.search input:focus {
+  box-shadow: 0 0 5px var(--theme-color, #42b983);
+  border: 1px solid var(--theme-color, #42b983);
+}
+
+.search input::-webkit-search-decoration,
+.search input::-webkit-search-cancel-button,
+.search input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.search input::-ms-clear {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+.search .clear-button {
+  cursor: pointer;
+  width: 36px;
+  text-align: right;
+  display: none;
+}
+
+.search .clear-button.show {
+  display: block;
+}
+
+.search .clear-button svg {
+  transform: scale(.5);
+}
+
+.search h2 {
+  font-size: 17px;
+  margin: 10px 0;
+}
+
+.search a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.search .matching-post {
+  border-bottom: 1px solid #eee;
+}
+
+.search .matching-post:last-child {
+  border-bottom: 0;
+}
+
+.search p {
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.search p.empty {
+  text-align: center;
+}
+
+.app-name.hide, .sidebar-nav.hide {
+  display: none;
+}</style></head>
+<body data-page="v3.md" class="ready sticky">
+  <main><button class="sidebar-toggle" aria-label="Menu"><div class="sidebar-toggle-button"><span></span><span></span><span></span></div></button><aside class="sidebar"><div class="search"><div class="input-wrap">
+      <input type="search" value="" aria-label="Search text" placeholder="Search">
+      <div class="clear-button">
+        <svg width="26" height="24">
+          <circle cx="12" cy="12" r="11" fill="#ccc"></circle>
+          <path stroke="white" stroke-width="2" d="M8.25,8.25,15.75,15.75"></path>
+          <path stroke="white" stroke-width="2" d="M8.25,15.75,15.75,8.25"></path>
+        </svg>
+      </div>
+    </div>
+    <div class="results-panel"></div>
+    </div><h1 class="app-name"><a class="app-name-link" data-nosearch="" href="https://agibot-world.cn/sim-evaluation/docs/#/v3">Genie Sim Benchmark</a></h1><div class="sidebar-nav"><ul><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=genie-sim-30-user-guide" title="Genie Sim 3.0 User Guide">Genie Sim 3.0 User Guide</a></li><ul><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_1-overview" title="1. Overview">1. Overview</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_2-quick-start" title="2. Quick Start">2. Quick Start</a></li><ul><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_21-requirements" title="2.1 Requirements">2.1 Requirements</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_22-download" title="2.2 Download">2.2 Download</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_23-installation" title="2.3 Installation">2.3 Installation</a></li><ul><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_231-docker-container-recommended" title="2.3.1 Docker Container (recommended)">2.3.1 Docker Container (recommended)</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_232-optional-use-genie-sim-as-python-module" title="2.3.2 (optional) Use Genie Sim as Python Module">2.3.2 (optional) Use Genie Sim as Python Module</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_233-host-machine" title="2.3.3 Host Machine">2.3.3 Host Machine</a></li><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_234-developer-guide" title="2.3.4 Developer Guide">2.3.4 Developer Guide</a></li><ul><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_2341-enable-pre-commit-hooks-for-collaboration-optional" title="2.3.4.1 Enable pre-commit hooks for collaboration (optional)">2.3.4.1 Enable <code>pre-commit</code> hooks for collaboration (optional)</a></li></ul></ul></ul><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_3-tutorials" title="3. Tutorials">3. Tutorials</a></li><ul><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_31-benchmark-evaluation" title="3.1 Benchmark Evaluation">3.1 Benchmark Evaluation</a></li><ul><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_311-task-overview" title="3.1.1 Task Overview">3.1.1 Task Overview</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_312-run-a-simulation-task" title="3.1.2 Run a Simulation Task">3.1.2 Run a Simulation Task</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_313-run-inference-simulation" title="3.1.3 Run Inference + Simulation">3.1.3 Run Inference + Simulation</a></li><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_314-vlm-auto-evaluation" title="3.1.4 VLM Auto Evaluation">3.1.4 VLM Auto Evaluation</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_315-batch-run-task-suite" title="3.1.5 Batch Run Task Suite">3.1.5 Batch Run Task Suite</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_316-utility-scripts" title="3.1.6 Utility Scripts">3.1.6 Utility Scripts</a></li><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_317-model-training" title="3.1.7 Model Training">3.1.7 Model Training</a></li></ul><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_32-scene-generator" title="3.2 Scene Generator">3.2 Scene Generator</a></li><ul><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_321-features" title="3.2.1 Features">3.2.1 Features</a></li><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_322-deploy" title="3.2.2 Deploy">3.2.2 Deploy</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_323-start-scene-generation" title="3.2.3 Start Scene Generation">3.2.3 Start Scene Generation</a></li><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_324-mass-scale-scene-layout-generalization" title="3.2.4 Mass-scale scene layout generalization">3.2.4 Mass-scale scene layout generalization</a></li></ul><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_33-synthetic-data-collection" title="3.3 Synthetic Data Collection">3.3 Synthetic Data Collection</a></li><ul><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_331-teleoperation" title="3.3.1 Teleoperation">3.3.1 Teleoperation</a></li><ul><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_3311-pico-setup" title="3.3.1.1 Pico Setup">3.3.1.1 Pico Setup</a></li><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_3312-launch-setup" title="3.3.1.2 Launch Setup">3.3.1.2 Launch Setup</a></li></ul><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_332-automated-collection" title="3.3.2 Automated Collection">3.3.2 Automated Collection</a></li><ul><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_3321-installation" title="3.3.2.1 Installation">3.3.2.1 Installation</a></li><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_3322-data-collection" title="3.3.2.2​ Data Collection">3.3.2.2​ Data Collection</a></li></ul></ul><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_34-scene-reconstruction" title="3.4 Scene Reconstruction">3.4 Scene Reconstruction</a></li><ul><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_341-data-introduction" title="3.4.1 Data Introduction">3.4.1 Data Introduction</a></li><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_342-environment-installation" title="3.4.2 Environment Installation">3.4.2 Environment Installation</a></li><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_343-run-scene-reconstruction" title="3.4.3 Run Scene Reconstruction">3.4.3 Run Scene Reconstruction</a></li></ul><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_35-agibot-world-challenge-reasoning-to-action-tasks-icra" title="3.5 AgiBot World Challenge Reasoning to Action Tasks (ICRA)">3.5 AgiBot World Challenge Reasoning to Action Tasks (ICRA)</a></li><ul><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_351-run-baseline-model-inference" title="3.5.1 Run Baseline Model Inference">3.5.1 Run Baseline Model Inference</a></li><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_352-run-icra-tasks" title="3.5.2 Run ICRA tasks">3.5.2 Run ICRA tasks</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_353-integrate-your-own-policy" title="3.5.3 Integrate Your Own Policy">3.5.3 Integrate Your Own Policy</a></li><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_354-submit-your-policy" title="3.5.4 Submit Your Policy">3.5.4 Submit Your Policy</a></li></ul><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_36-reinforcement-learning-with-rlinf" title="3.6 Reinforcement Learning with RLinf">3.6 Reinforcement Learning with RLinf</a></li><ul><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_361-repository-setup" title="3.6.1 Repository Setup">3.6.1 Repository Setup</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_362-docker-image-build" title="3.6.2 Docker Image Build">3.6.2 Docker Image Build</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_363-spacemouse-setup" title="3.6.3 SpaceMouse Setup">3.6.3 SpaceMouse Setup</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_364-download-pretrained-weights" title="3.6.4 Download Pretrained Weights">3.6.4 Download Pretrained Weights</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_365-collect-demonstration-data" title="3.6.5 Collect Demonstration Data">3.6.5 Collect Demonstration Data</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_366-convert-demonstration-data" title="3.6.6 Convert Demonstration Data">3.6.6 Convert Demonstration Data</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_367-start-training" title="3.6.7 Start Training">3.6.7 Start Training</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_368-monitoring-and-debugging" title="3.6.8 Monitoring and Debugging">3.6.8 Monitoring and Debugging</a></li><li class=""><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_369-command-reference" title="3.6.9 Command Reference">3.6.9 Command Reference</a></li><li class="active"><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_3610-key-configuration-files" title="3.6.10 Key Configuration Files">3.6.10 Key Configuration Files</a></li><li><a class="section-link" href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_3611-troubleshooting" title="3.6.11 Troubleshooting">3.6.11 Troubleshooting</a></li></ul></ul></ul></ul></div></aside><section class="content"><article class="markdown-section" id="main"><h1 id="genie-sim-30-user-guide"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=genie-sim-30-user-guide" data-id="genie-sim-30-user-guide" class="anchor"><span>Genie Sim 3.0 User Guide</span></a></h1><h2 id="_1-overview"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_1-overview" data-id="_1-overview" class="anchor"><span>1. Overview</span></a></h2><p>Genie Sim is the simulation platform from AgiBot. It provides developers with a complete toolchain for digital asset generation, scene generalization, data collection, and automated evaluation. Its core module, Genie Sim Benchmark is a standardized tool dedicated to establishing the most accurate and authoritative evaluation for embodied intelligence.</p><p>The platform integrates 3D reconstruction with visual generation to create a high-fidelity simulation environment. It pioneers LLM-driven technology to generate vast simulation scenes and evaluation metrics in minutes. The evaluation system covers 200+ tasks across 100,000+ scenarios to build a comprehensive capability profile for models. Genie Sim also opens over 10,000 hours simulation dataset including real-world robot operation scenarios.</p><p>The platform will significantly accelerate model development, reduce reliance on physical hardware, and empower innovation in embodied intelligence. Simulation assets, data, and code are fully open source.</p><h2 id="_2-quick-start"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_2-quick-start" data-id="_2-quick-start" class="anchor"><span>2. Quick Start</span></a></h2><h3 id="_21-requirements"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_21-requirements" data-id="_21-requirements" class="anchor"><span>2.1 Requirements</span></a></h3><table>
+<thead>
+<tr>
+<th align="left">Minimum</th>
+<th align="left">Tested</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><ul><li>Ubuntu 22.04/24.04</li><li>NVIDIA Isaac Sim 5.1.0</li><li>Hardware<ul><li>CPU: Inter Core i7(7th Generation) AMD Ryzen 5</li><li>RAM: 32GB</li><li>GPU: GeForce RTX 4080</li><li>Driver: 580.65.06</li><li>Storage: 50GB SSD</li></ul></li></ul></td>
+<td align="left"><ul><li>Ubuntu 22.04</li><li>NVIDIA Isaac Sim 5.1.0</li><li>Hardware<ul><li>CPU: Inter Core i7(12th Generation)</li><li>RAM: 64GB</li><li>GPU: GeForce RTX 4090D</li><li>Driver: 550.120 + CUDA 12.4</li><li>Storage: 1TB NVMe SSD</li></ul></li></ul></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><a href="https://docs.isaacsim.omniverse.nvidia.com/latest/installation/requirements.html" target="_blank" rel="noopener">https://docs.isaacsim.omniverse.nvidia.com/latest/installation/requirements.html</a></p></blockquote>
+<h3 id="_22-download"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_22-download" data-id="_22-download" class="anchor"><span>2.2 Download</span></a></h3><ul><li><p>Genie Sim</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token function">git</span> clone https://github.com/AgibotTech/genie_sim.git</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre></li><li><p>Genie Sim Assets</p><p>Download Genie Sim Assets and put them into <code>genie_sim/source/geniesim/assets</code>:</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token comment"># ModelScope</span>
+<span class="token function">git</span> clone https://www.modelscope.cn/datasets/agibot_world/GenieSimAssets.git <span class="token parameter variable">--branch</span> rolling genie_sim/source/geniesim/assets
+
+<span class="token comment"># Hugging Face</span>
+<span class="token function">git</span> clone https://huggingface.co/datasets/agibot-world/GenieSimAssets <span class="token parameter variable">--branch</span> rolling genie_sim/source/geniesim/assets</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><blockquote>
+<p><strong>NOTE: Please use the</strong> <strong><code>rolling</code></strong> <strong>branch to get the latest assets.</strong></p></blockquote>
+</li></ul><h3 id="_23-installation"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_23-installation" data-id="_23-installation" class="anchor"><span>2.3 Installation</span></a></h3><h4 id="_231-docker-container-recommended"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_231-docker-container-recommended" data-id="_231-docker-container-recommended" class="anchor"><span>2.3.1 Docker Container (recommended)</span></a></h4><ol><li>Prepare docker image</li></ol><blockquote>
+<p>NOTE：Genie Sim Benchmark dropped support for curobo since 3.0</p></blockquote>
+<pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token comment"># create docker image from dockerfile</span>
+<span class="token builtin class-name">cd</span> genie_sim
+genie_sim$ <span class="token function">docker</span> build <span class="token parameter variable">-f</span> ./scripts/dockerfile <span class="token parameter variable">-t</span> registry.agibot.com/genie-sim/open_source:latest <span class="token builtin class-name">.</span></code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><ol><li>Launch docker container and run the demo<blockquote>
+<p>Make sure GenieSimAssets is downloaded at genie_sim/source/geniesim/assets</p></blockquote>
+</li></ol><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token comment"># start a new container in repo root</span>
+<span class="token builtin class-name">cd</span> genie_sim
+genie_sim$ ./scripts/start_gui.sh
+
+<span class="token comment"># open a new terminal, into container</span>
+genie_sim$ ./scripts/into.sh
+
+<span class="token comment"># inside container, run the demo</span>
+/geniesim/main$ geniesim <span class="token parameter variable">--config</span> source/geniesim/config/s2r_select_color.yaml</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><h4 id="_232-optional-use-genie-sim-as-python-module"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_232-optional-use-genie-sim-as-python-module" data-id="_232-optional-use-genie-sim-as-python-module" class="anchor"><span>2.3.2 (optional) Use Genie Sim as Python Module</span></a></h4><blockquote>
+<p>NOTE：This is for <code>import geniesim</code> from other workspace,<code>geniesim</code> is tested only in conda python3.11</p></blockquote>
+<pre v-pre="" data-lang="python"><code class="lang-python"><span class="token comment"># prepare conda env</span>
+cd genie_sim
+genie_sim$ conda create <span class="token operator">-</span><span class="token operator">-</span>name geniesim python<span class="token operator">=</span><span class="token number">3.11</span>
+
+<span class="token comment"># cd in genie_sim root dir</span>
+genie_sim$ conda activate genniesim
+genie_sim$ python <span class="token operator">-</span>m pip install <span class="token operator">-</span>e <span class="token punctuation">.</span><span class="token operator">/</span>source</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><h4 id="_233-host-machine"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_233-host-machine" data-id="_233-host-machine" class="anchor"><span>2.3.3 Host Machine</span></a></h4><ol><li>We <strong>STRONGLY</strong> recommend developers using our tested docker container environment for development</li></ol><h4 id="_234-developer-guide"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_234-developer-guide" data-id="_234-developer-guide" class="anchor"><span>2.3.4 Developer Guide</span></a></h4><h5 id="_2341-enable-pre-commit-hooks-for-collaboration-optional"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_2341-enable-pre-commit-hooks-for-collaboration-optional" data-id="_2341-enable-pre-commit-hooks-for-collaboration-optional" class="anchor"><span>2.3.4.1 Enable <code>pre-commit</code> hooks for collaboration (optional)</span></a></h5><blockquote>
+<p>NOTE: Make sure dependencies in requirements.txt are properly installed, the pre-commit hook will be triggered once git commit is involved.</p></blockquote>
+<ol><li>Install and setup <code>pre-commit</code> to enable auto file-formatter, python / json / yaml etc.</li></ol><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token comment"># install pre-commit to your python env</span>
+genie_sim$ pip <span class="token function">install</span> pre-commit
+
+<span class="token comment"># enable pre-defined pre-commit-hooks within repo</span>
+genie_sim$ pre-commit <span class="token function">install</span></code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><ol><li>Trigger file-formatter for all tracked files</li></ol><pre v-pre="" data-lang="bash"><code class="lang-bash">genie_sim$ pre-commit run --all-files</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><h2 id="_3-tutorials"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_3-tutorials" data-id="_3-tutorials" class="anchor"><span>3. Tutorials</span></a></h2><h3 id="_31-benchmark-evaluation"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_31-benchmark-evaluation" data-id="_31-benchmark-evaluation" class="anchor"><span>3.1 Benchmark Evaluation</span></a></h3><p>GenieSim Benchmark provides a standardized evaluation pipeline for robot manipulation policies. The benchmark supports four task categories and automates the entire process from simulation execution to score aggregation.</p><h4 id="_311-task-overview"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_311-task-overview" data-id="_311-task-overview" class="anchor"><span>3.1.1 Task Overview</span></a></h4><p>GenieSim Benchmark organizes evaluation tasks into four categories. Each task is defined by a YAML config file under <code>source/geniesim/config/</code>, named with a category prefix.</p><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Prefix</th>
+<th>Description</th>
+<th>Example Tasks</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>if</code></td>
+<td><code>if_*.yaml</code></td>
+<td>Instruction Following – pick/place guided by language instructions</td>
+<td>pick_block_color, pick_block_shape, pick_object_type, straighten_object, etc.</td>
+</tr>
+<tr>
+<td><code>robust</code></td>
+<td><code>robust_*.yaml</code></td>
+<td>Robustness – evaluate generalization under perturbations (camera noise, lighting, material, joint PD, etc.)</td>
+<td>robust_pick_block_color_lightgen, robust_pick_block_color_camoccgen, etc.</td>
+</tr>
+<tr>
+<td><code>manip</code></td>
+<td><code>manip_*.yaml</code></td>
+<td>Manipulation – complex manipulation tasks (pour, scoop, open door, bimanual)</td>
+<td>manip_open_door, manip_pour_workpiece, manip_bimanual_hold_pot, etc.</td>
+</tr>
+<tr>
+<td><code>s2r</code></td>
+<td><code>s2r_*.yaml</code></td>
+<td>Sim-to-Real – tasks designed to test sim-to-real transfer</td>
+<td>s2r_stack_blocks, s2r_select_color, s2r_sort_fruit, etc.</td>
+</tr>
+</tbody></table>
+<p>A typical task config looks like:</p><pre v-pre="" data-lang="yaml"><code class="lang-yaml">app:
+  enable_rate_limit: true
+  enable_ros: false
+benchmark:
+  task_name: table_task_1_g2
+  sub_task_name: pick_block_color
+  seed: 1
+  model_arc: pi
+  num_episode: 1
+  record: false</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Key parameters:</p><table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Section</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>enable_rate_limit</code></td>
+<td>app</td>
+<td>Enable simulation rate limiting for stable execution</td>
+</tr>
+<tr>
+<td><code>enable_ros</code></td>
+<td>app</td>
+<td>Enable ROS2 communication (required for recording)</td>
+</tr>
+<tr>
+<td><code>task_name</code></td>
+<td>benchmark</td>
+<td>Background scene/environment name</td>
+</tr>
+<tr>
+<td><code>sub_task_name</code></td>
+<td>benchmark</td>
+<td>Specific task name</td>
+</tr>
+<tr>
+<td><code>seed</code></td>
+<td>benchmark</td>
+<td>Random seed for reproducibility</td>
+</tr>
+<tr>
+<td><code>model_arc</code></td>
+<td>benchmark</td>
+<td>Policy model architecture (e.g., <code>pi</code>)</td>
+</tr>
+<tr>
+<td><code>num_episode</code></td>
+<td>benchmark</td>
+<td>Number of evaluation episodes</td>
+</tr>
+<tr>
+<td><code>infer_host</code></td>
+<td>benchmark</td>
+<td>Inference server address (default: <code>localhost:8999</code>)</td>
+</tr>
+<tr>
+<td><code>record</code></td>
+<td>benchmark</td>
+<td>Enable rosbag recording</td>
+</tr>
+<tr>
+<td><code>preview</code></td>
+<td>benchmark</td>
+<td>Enable debug preview images</td>
+</tr>
+</tbody></table>
+<p>Any parameter in the YAML config can be overridden via CLI with <code>--section.key value</code> syntax.</p><h4 id="_312-run-a-simulation-task"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_312-run-a-simulation-task" data-id="_312-run-a-simulation-task" class="anchor"><span>3.1.2 Run a Simulation Task</span></a></h4><p>This section demonstrates how to launch a single benchmark simulation task, using <code>s2r_select_color</code> as an example.</p><p>Start the simulation container with GUI:</p><pre v-pre="" data-lang="bash"><code class="lang-bash">genie_sim$ ./scripts/start_gui.sh</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Enter the container:</p><pre v-pre="" data-lang="bash"><code class="lang-bash">genie_sim$ ./scripts/into.sh</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Run the simulation task:</p><pre v-pre="" data-lang="bash"><code class="lang-bash">/geniesim/main$ geniesim <span class="token parameter variable">--config</span> source/geniesim/config/s2r_select_color.yaml</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>You can override config parameters via CLI. For example, to run task preview:</p><pre v-pre="" data-lang="bash"><code class="lang-bash">/geniesim/main$ geniesim <span class="token punctuation">\</span>
+  <span class="token parameter variable">--config</span> source/geniesim/config/s2r_select_color.yaml <span class="token punctuation">\</span>
+  <span class="token parameter variable">--benchmark.preview</span> <span class="token boolean">true</span></code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><h4 id="_313-run-inference-simulation"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_313-run-inference-simulation" data-id="_313-run-inference-simulation" class="anchor"><span>3.1.3 Run Inference + Simulation</span></a></h4><p>This section walks through running a full inference-driven simulation task end-to-end. It requires two separate Docker containers: one for the policy inference server and one for the simulation.</p><p><strong>Step 1: Setup inference code</strong></p><pre v-pre="" data-lang="bash"><code class="lang-bash">genie_sim$ ./scripts/infer_setup.sh</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>Step 2: Download checkpoints</strong></p><p>Demo task checkpoints are available on ModelScope: <a href="https://modelscope.cn/datasets/agibot_world/GenieSim3.0-Dataset/tree/master/checkpoints" target="_blank" rel="noopener">https://modelscope.cn/datasets/agibot_world/GenieSim3.0-Dataset/tree/master/checkpoints</a></p><table>
+<thead>
+<tr>
+<th align="left">Checkpoint Path</th>
+<th align="left">Task Config</th>
+<th align="left">Checkpoint Path</th>
+<th align="left">Task Config</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">select_color</td>
+<td align="left">s2r_select_color</td>
+<td align="left">recognize_size</td>
+<td align="left">s2r_size_recognize</td>
+</tr>
+<tr>
+<td align="left">grasp_targets</td>
+<td align="left">s2r_grasp_targets</td>
+<td align="left">organize_items</td>
+<td align="left">s2r_organize_items</td>
+</tr>
+<tr>
+<td align="left">sort_fruit</td>
+<td align="left">s2r_sort_fruit</td>
+<td align="left">handover_chips</td>
+<td align="left">s2r_bimanual_chip_handover</td>
+</tr>
+<tr>
+<td align="left">pack_in_supermarket</td>
+<td align="left">s2r_pack_in_supermarket</td>
+<td align="left">place_block_in_drawer</td>
+<td align="left">s2r_place_block_into_drawer</td>
+</tr>
+</tbody></table>
+<p>After running <code>infer_setup.sh</code>, use the provided script to download checkpoints:</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token comment"># Download default checkpoint (select_color)</span>
+genie_sim$ ./scripts/download_checkpoint.sh
+
+<span class="token comment"># Download a specific task checkpoint</span>
+genie_sim$ ./scripts/download_checkpoint.sh select_color
+genie_sim$ ./scripts/download_checkpoint.sh grasp_targets</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>Step 3: Docker setup for inference</strong></p><p>a. Pull the base docker image</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token function">docker</span> pull nvcr.io/nvidia/cuda@sha256:2d913b09e6be8387e1a10976933642c73c840c0b735f0bf3c28d97fc9bc422e0</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>b. Build the docker image for openpi</p><pre v-pre="" data-lang="bash"><code class="lang-bash">genie_sim$ <span class="token builtin class-name">cd</span> openpi
+genie_sim/openpi$ <span class="token function">docker</span> compose <span class="token parameter variable">-f</span> scripts/docker/compose.yml up <span class="token parameter variable">--build</span></code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Reference: <a href="https://github.com/Physical-Intelligence/openpi/blob/main/docs/docker.md" target="_blank" rel="noopener">https://github.com/Physical-Intelligence/openpi/blob/main/docs/docker.md</a></p><p>c. Create docker container and start inference</p><pre v-pre="" data-lang="bash"><code class="lang-bash">genie_sim/openpi$ ./scripts/docker/run_infer.sh</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>Step 4: Start inference service</strong></p><p>The inference service is deployed on localhost by default. You can also start a service on other machines and set the corresponding IP and port in benchmark configuration files for distributed communication.</p><pre v-pre="" data-lang="bash"><code class="lang-bash">geniesim<span class="token comment"># bash scripts/server.sh 0 8999 S2R_SELECT_COLOR</span></code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>Step 5: Start simulation container and run the task</strong></p><p>In another terminal, start the simulation container and execute the task:</p><pre v-pre="" data-lang="bash"><code class="lang-bash">genie_sim$ ./scripts/start_gui.sh
+genie_sim$ ./scripts/into.sh
+
+/geniesim/main$ geniesim <span class="token parameter variable">--config</span> source/geniesim/config/s2r_select_color.yaml</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>To point the simulation to a remote inference server, override the <code>infer_host</code> parameter:</p><pre v-pre="" data-lang="bash"><code class="lang-bash">/geniesim/main$ geniesim <span class="token parameter variable">--config</span> source/geniesim/config/s2r_select_color.yaml <span class="token punctuation">\</span>
+  <span class="token parameter variable">--benchmark.infer_host</span> ip:port</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><h4 id="_314-vlm-auto-evaluation"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_314-vlm-auto-evaluation" data-id="_314-vlm-auto-evaluation" class="anchor"><span>3.1.4 VLM Auto Evaluation</span></a></h4><p>GenieSim Benchmark integrates a VLM-based automatic evaluation system. During benchmark execution, the VLM evaluator captures robot camera images at key steps and uses a vision-language model to score task completion automatically.</p><p><strong>Configuration</strong></p><p>The LLM/VLM configuration is stored at <code>source/geniesim/evaluator/config/llm_config.yaml</code>:</p><pre v-pre="" data-lang="yaml"><code class="lang-yaml">llm:
+  api_key: ""
+  base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  model: "qwen3-max"
+
+vlm:
+  api_key: ""
+  base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  model: "qwen3-vl-plus"</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>You can also override these settings via environment variables. Export the following environment variables in the container before running benchmark tasks:</p><table>
+<thead>
+<tr>
+<th align="left">Var Name</th>
+<th align="left">Default Setting</th>
+<th align="left">Usage</th>
+<th align="left">Necessity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">BASE_URL</td>
+<td align="left"><a href="https://dashscope.aliyuncs.com/compatible-mode/v1" target="_blank" rel="noopener">https://dashscope.aliyuncs.com/compatible-mode/v1</a></td>
+<td align="left">API endpoint</td>
+<td align="left">Required</td>
+</tr>
+<tr>
+<td align="left">API_KEY</td>
+<td align="left">Your Api Key</td>
+<td align="left">API authentication</td>
+<td align="left">Required</td>
+</tr>
+<tr>
+<td align="left">MODEL</td>
+<td align="left">qwen3-max</td>
+<td align="left">for evaluation generation</td>
+<td align="left">Optional</td>
+</tr>
+<tr>
+<td align="left">VL_MODEL</td>
+<td align="left">qwen3-vl-plus</td>
+<td align="left">for VLM auto score</td>
+<td align="left">Required</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Environment variables take priority over the YAML config file. If no environment variable is set, the values in <code>llm_config.yaml</code> are used.</p></blockquote>
+<h4 id="_315-batch-run-task-suite"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_315-batch-run-task-suite" data-id="_315-batch-run-task-suite" class="anchor"><span>3.1.5 Batch Run Task Suite</span></a></h4><p>This section describes how to run all tasks of a given category in batch. <strong>Before running batch tasks, make sure the inference service is already started</strong> (see <a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=313-run-inference--simulation">3.1.3</a>).</p><p><strong>Prerequisites</strong></p><p>Start the simulation container (headless mode is recommended for batch runs):</p><pre v-pre="" data-lang="bash"><code class="lang-bash">genie_sim$ ./scripts/start_gui.sh</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><br>
+
+<p><strong>Run a full task category</strong></p><p>Use <code>run_batch_tasks.sh</code> to run all tasks of a given category:</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token comment"># Basic usage (required: --type)</span>
+/geniesim/main$ ./scripts/run_batch_tasks.sh <span class="token parameter variable">--type</span> <span class="token keyword">if</span>
+
+<span class="token comment"># With custom inference host</span>
+/geniesim/main$ ./scripts/run_batch_tasks.sh <span class="token parameter variable">--type</span> s2r --infer-host ip:port
+
+<span class="token comment"># With multiple episodes</span>
+/geniesim/main$ ./scripts/run_batch_tasks.sh <span class="token parameter variable">--type</span> manip --num-episode <span class="token number">5</span>
+
+<span class="token comment"># With preview mode (saves debug preview images)</span>
+/geniesim/main$ ./scripts/run_batch_tasks.sh <span class="token parameter variable">--type</span> robust <span class="token parameter variable">--preview</span> <span class="token parameter variable">--preview_out</span> /path/to/output
+
+<span class="token comment"># Full example</span>
+/geniesim/main$ ./scripts/run_batch_tasks.sh <span class="token parameter variable">--type</span> <span class="token keyword">if</span> --infer-host ip:port --num-episode <span class="token number">10</span> <span class="token parameter variable">--preview</span></code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Arguments:</p><table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--type TYPE</code></td>
+<td>Yes</td>
+<td>Task category: <code>if</code>, <code>robust</code>, <code>manip</code>, or <code>s2r</code></td>
+</tr>
+<tr>
+<td><code>--infer-host HOST:PORT</code></td>
+<td>No</td>
+<td>Override the policy inference server address (default: <code>localhost:8999</code>)</td>
+</tr>
+<tr>
+<td><code>--num-episode N</code></td>
+<td>No</td>
+<td>Number of episodes per task (default: 1)</td>
+</tr>
+<tr>
+<td><code>--preview</code></td>
+<td>No</td>
+<td>Enable preview mode (saves debug images)</td>
+</tr>
+<tr>
+<td><code>--preview_out PATH</code></td>
+<td>No</td>
+<td>Custom output directory for preview images</td>
+</tr>
+</tbody></table>
+<p><strong>Output structure</strong></p><p>Benchmark results are saved under <code>output/benchmark/</code>:</p><pre v-pre="" data-lang=""><code class="lang-">output/benchmark/
+├── pick_block_color/
+│   ├── episode_0/
+│   │   └── result.json
+│   ├── episode_1/
+│   │   └── result.json
+│   └── statistics.json
+├── pick_block_shape/
+│   └── ...
+└── ...</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>After all tasks complete, <code>run_batch_tasks.sh</code> automatically runs <code>stat_average.py</code> to compute and display the overall average score. If a previous benchmark output exists, it is automatically backed up to <code>output/benchmark_{YYYY-MM-DD-HH}/</code> before starting a new run.</p><h4 id="_316-utility-scripts"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_316-utility-scripts" data-id="_316-utility-scripts" class="anchor"><span>3.1.6 Utility Scripts</span></a></h4><p><strong>Cleanup</strong></p><p>If a run is interrupted or processes are left behind, use the cleanup script to kill any residual simulation, ROS2, and Carbonite processes:</p><pre v-pre="" data-lang="bash"><code class="lang-bash">/geniesim/main$ ./scripts/clean.sh</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>Record Simulation Data</strong></p><p>To enable video recording of benchmark episodes:</p><ol><li>Set <code>enable_ros: true</code> in the <code>app</code> section of the task YAML config</li><li>Set <code>record: true</code> in the <code>benchmark</code> section</li><li>Start the auto-recorder in a separate terminal inside the container:</li></ol><pre v-pre="" data-lang="bash"><code class="lang-bash">/geniesim/main$ ./scripts/start_auto_record.sh</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Optional arguments:</p><table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>--final_output_dir DIR</code></td>
+<td>Custom final output directory</td>
+</tr>
+<tr>
+<td><code>--resize_width WIDTH</code></td>
+<td>Resize image width</td>
+</tr>
+<tr>
+<td><code>--resize_height HEIGHT</code></td>
+<td>Resize image height</td>
+</tr>
+<tr>
+<td><code>--image_timeout SEC</code></td>
+<td>Auto stop recording after N seconds with no new image (default: 30.0)</td>
+</tr>
+</tbody></table>
+<p>The recording process auto exits after simulation is finished. Press <code>Ctrl+C</code> to stop gracefully and convert videos. Recorded data (rosbag + extracted videos) will be saved at <code>./output/recording_data/</code>.</p><p><strong>Collect Scores</strong></p><p>Compute the average score across all benchmark tasks:</p><pre v-pre="" data-lang="bash"><code class="lang-bash">/geniesim/main$ python3 scripts/stat_average.py output/benchmark</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><h4 id="_317-model-training"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_317-model-training" data-id="_317-model-training" class="anchor"><span>3.1.7 Model Training</span></a></h4><ol><li>Download training data</li></ol><p>Training datasets are available on ModelScope: <a href="https://modelscope.cn/datasets/agibot_world/GenieSim3.0-Dataset/tree/master/task_suite" target="_blank" rel="noopener">https://modelscope.cn/datasets/agibot_world/GenieSim3.0-Dataset/tree/master/task_suite</a></p><p>Use the provided script to download task suite data:</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token comment"># Download all task suites</span>
+genie_sim$ ./scripts/download_dataset.sh
+
+<span class="token comment"># Download a specific task suite</span>
+genie_sim$ ./scripts/download_dataset.sh instruction
+genie_sim$ ./scripts/download_dataset.sh manipulation
+genie_sim$ ./scripts/download_dataset.sh sim2real
+
+<span class="token comment"># Download to a custom directory</span>
+genie_sim$ ./scripts/download_dataset.sh sim2real /path/to/save</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><ol start="2"><li>Model Training &amp; Inference</li></ol><p>GenieSim Benchmark supports multiple model architectures for training and inference:</p><table>
+<thead>
+<tr>
+<th align="left">Model</th>
+<th align="left">Reference</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">GR00T</td>
+<td align="left"><a href="https://github.com/MiaoMieu/Isaac-GR00T/blob/main/scripts/preprocess_agibot/USER_GUIDE.md" target="_blank" rel="noopener">Isaac-GR00T User Guide</a></td>
+</tr>
+<tr>
+<td align="left">ACoT-VLA</td>
+<td align="left"><a href="https://github.com/AgibotTech/ACoT-VLA" target="_blank" rel="noopener">ACoT-VLA</a></td>
+</tr>
+<tr>
+<td align="left">Pi0 / Pi0.5</td>
+<td align="left"><a href="https://github.com/Anonymous-694/ACoT-VLA" target="_blank" rel="noopener">OpenPI</a></td>
+</tr>
+</tbody></table>
+<h3 id="_32-scene-generator"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_32-scene-generator" data-id="_32-scene-generator" class="anchor"><span>3.2 Scene Generator</span></a></h3><p><code>Scene Generator</code> is an <strong>LLM-driven</strong> pipeline which takes in the natural language from the user, then performs <em><strong>RAG retrieval</strong></em> from <code>geniesim.assets</code> module and python coding for <strong>scene_graph</strong>, finally returns the "scene language".</p><h4 id="_321-features"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_321-features" data-id="_321-features" class="anchor"><span>3.2.1 Features</span></a></h4><ol><li><strong>Promptable</strong> - Chat within one window with continuous context.</li><li><strong>Scene Graph</strong> - Structural scene graph and text annotation, LLM-friendly, benchmark-task-friendly.</li><li><strong>Controllable Edit</strong> - High precision in spatial space, and code-level controllability</li><li><strong>Generalization</strong> - Semantic, spatial joint generalization through many aspects</li><li><strong>Customize</strong> - RAG enhanced LLM is training free and supports user's own LLM</li><li><strong>GenieSim Ready</strong> - The output scene_graph and scene layout assets are integrated seamlessly in to <code>geniesim.benchmark</code></li></ol><h4 id="_322-deploy"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_322-deploy" data-id="_322-deploy" class="anchor"><span>3.2.2 Deploy</span></a></h4><blockquote>
+<ul><li>The generator module is located at <code>{GENIESIM_REPO}/source/geniesim/generator</code></li><li>You <strong>MUST</strong> prepare your own <code>OPENAI_API_BASE_URL</code> and <code>OPENAI_API_KEY</code> before running the generator pipeline</li></ul></blockquote>
+<ol>
+<li>Below are the popular models we tested.
+
+<table>
+<thead>
+<tr>
+<th align="left">Model Provider</th>
+<th align="left">Model Name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ChatGPT</td>
+<td align="left"><code>gpt-5</code></td>
+</tr>
+<tr>
+<td align="left">Gemini</td>
+<td align="left"><code>gemini-pro-latest</code></td>
+</tr>
+<tr>
+<td align="left">DeepSeek</td>
+<td align="left"><code>deepseek-chat/deepseek-reasoner</code></td>
+</tr>
+<tr>
+<td align="left">QWEN</td>
+<td align="left"><code>qwen3-max</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+Different models may have big differences in the output, and they're all input sensitive.<br>
+Models with think mode or reasoner model may think longer and consume more tokens, this depends on how complex the scenario is.<br>
+For text embedding model for asset searching, we recommend <strong>QWEN:text-embedding-v4 with 2048 dimensions</strong>.
+</blockquote>
+</li>
+
+<li>Launch generator pipeline with following command.
+<ol type="a">
+  <li>Configure the embedding model.
+    <p>Choose either text embedding model (recommend <strong>QWEN:text-embedding-v4</strong>) through <strong>API</strong> or VL embedding model by local deployment.</p>
+    <ul>
+      <li><strong>Text embedding.</strong><br>
+        Configure <code>{GENIESIM_REPO}/source/geniesim/generator/server/mcp_text_embedding/text_embedding_config.json</code> with your <strong>api key</strong> and <strong>base-url</strong> of your embedding model.
+      </li>
+      <li><strong>VL embedding (local GPU is required).</strong>
+        <ol>
+          <li>Download VL embedding model.<br>
+            We use <a href="https://github.com/QwenLM/Qwen3-VL-Embedding">Qwen3-VL-Embedding</a>. You can download the models using the script below or manually download Qwen3-VL-Embedding Model and Qwen3-VL-Reranker Model together with their corresponding scripts (<a href="https://raw.githubusercontent.com/QwenLM/Qwen3-VL-Embedding/main/src/models/qwen3_vl_embedding.py">Qwen3-VL-Embedding</a> and <a href="https://raw.githubusercontent.com/QwenLM/Qwen3-VL-Embedding/main/src/models/qwen3_vl_reranker.py">Qwen3-VL-Reranker</a>) and put them into <code>source/geniesim/generator/server/assets_searcher/models</code>.
+
+<pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token builtin class-name">cd</span> <span class="token punctuation">{</span>GENIESIM_REPO<span class="token punctuation">}</span>/source/geniesim/generator/server/assets_searcher
+<span class="token function">bash</span> download_models.sh  <span class="token comment"># Downloads model and scripts; see download_model.sh for details</span></code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre></li>
+          <li>Prepare assets visualization.<br>
+            In a Python environment with <strong>Isaac-Sim</strong>, run Python scripts in the assets folder.
+
+<pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token builtin class-name">cd</span> <span class="token punctuation">{</span>ASSETS_DIR<span class="token punctuation">}</span>
+python tools/generate_recorder_usda.py
+python tools/generate_object_snapshots_and_video.py</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Then, snapshots and videos will be generated at <code>{ASSETS_DIR}/extra/visualization/</code>.</p></li>
+          <li>(Optional) Configuration.<br>
+            Adjust <code>BATCH_SIZE</code> and <code>USE_RERANKER</code> under <code>services/mcp-server_vl/environment</code> in <code>source/geniesim/generator/compose.yaml</code> according to your hardware:
+            <blockquote>
+              <ul>
+                <li><code>BATCH_SIZE</code>: Batch size when building the vector index; larger uses more VRAM, smaller takes longer. Default 10 (e.g. RTX 4090).</li>
+                <li><code>USE_RERANKER</code>: Whether to use the reranker (<code>True</code>/<code>False</code>). Reranking improves search quality but increases latency and VRAM use.</li>
+              </ul>
+            </blockquote>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>Launch generator
+
+<pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token comment"># in Genie Sim repo root directory</span>
+<span class="token builtin class-name">cd</span> genie_sim
+
+<span class="token comment"># for text embedding</span>
+./scripts/start_generator.sh
+
+<span class="token comment"># for local VL embedding</span>
+./scripts/start_generator.sh <span class="token parameter variable">--vl_embedding</span></code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><blockquote>
+<ul>
+  <li>When docker compose up for the first time, it might be slow due to network turbulence.</li>
+  <li>If rebuilding is necessary, it might take 30~60 mins and cost some tokens.</li>
+  <li>Test open-webui by visiting <a href="http://localhost:8080/">http://localhost:8080</a>, and the UI should show up properly.</li>
+  <li>Test MCP-server by visiting <a href="http://localhost:8765/assets-agent/docs">http://localhost:8765/assets-agent/docs</a>. Click the <code>Try it Out</code> button, text something in the <code>keyword</code> field, then <code>Execute</code> and see if the server returns properly.<br>
+    <img src="./Genie Sim User Guide_files/1.png" style="width: 80%; height: 400px; object-fit: contain;"><br>
+    <img src="./Genie Sim User Guide_files/2.png" style="width: 50%; height: 400px; object-fit: contain;">
+    <img src="./Genie Sim User Guide_files/3.png" style="width: 30%; height: 400px; object-fit: contain;">
+  </li>
+</ul>
+</blockquote>
+  </li>
+</ol>
+</li>
+</ol>
+
+<ol start="3">
+<li>Setting up the geniesim webui configs, by following orders
+<ol type="a">
+  <li>First MAKE SURE add your <strong>OPENAI_API_BASE_URL</strong> and <strong>OPENAI_API_KEY</strong> to <em>generator/config/openwebui.json</em>.</li>
+  <li>Go to "Admin Panel(bottom left corner)" -&gt; "setting" -&gt; "database"
+    <blockquote>Or visit <a href="http://localhost:8080/admin/settings/db">http://localhost:8080/admin/settings/db</a></blockquote>
+    <ol type="i">
+      <li>Click "<em>Import Config from JSON File</em>"</li>
+      <li>Import <em>geniesim/generator/config/openwebui.json</em></li>
+    </ol>
+  </li>
+  <li>Go to "Admin Panel(bottom left corner)" -&gt; "Functions"
+    <blockquote>Or visit <a href="http://localhost:8080/admin/functions">http://localhost:8080/admin/functions</a></blockquote>
+    <ol type="i">
+      <li>Click <em>Import</em> (top right)</li>
+      <li>Import <em>geniesim/generator/config/function-save_code_to_file.json</em> and refresh with F5</li>
+      <li>Enable the imported function and set it <strong>global</strong></li>
+    </ol>
+  </li>
+  <li>Go to "workspace" -&gt; "models"
+    <blockquote>Or visit <a href="http://localhost:8080/admin/functions">http://localhost:8080/admin/functions</a></blockquote>
+    <ol type="i">
+      <li>Click <em>"Import"</em></li>
+      <li>Import <em>geniesim/generator/config/geniesimassets.json</em></li>
+      <li>Import <em>geniesim/generator/config/geniesimscenegen.json</em></li>
+    </ol>
+  </li>
+  <li>Edit the imported models to use your own LLM
+    <ol type="i">
+      <li>Click the <em>"..."</em> for more options on the right side of each model, select <em>"edit"</em></li>
+      <li>In the Base Model (From) section, select the LLM you wish to use</li>
+      <li>Go to the page bottom, click <em>Save &amp; Update</em>, done</li>
+    </ol>
+  </li>
+</ol>
+</li>
+</ol>
+
+<ol start="4"><li><p>(Optional) Customizations</p><p>a. If you wish to customize API Connection in Open WebUI</p><blockquote>
+<p>Once Open WebUI is running:</p><ol><li>Go to the ⚙️ ​<strong>Admin Settings</strong>​.</li><li>Navigate to <strong>Connections &gt; OpenAI &gt; Manage</strong> (look for the wrench icon).</li><li>Click ➕ ​<strong>Add New Connection</strong>​.</li></ol><ul><li>Standard / Compatible -&gt; Azure OpenAI</li></ul><p>Use this for ​<strong>OpenAI</strong>​, ​<strong>DeepSeek</strong>​, ​<strong>OpenRouter</strong>​, ​<strong>LocalAI</strong>​, ​<strong>FastChat</strong>​, ​<strong>Helicone</strong>​, ​<strong>LiteLLM</strong>​, etc.</p><ul><li>​<strong>Connection Type</strong>​: External</li><li>​<strong>URL</strong>​: <code>https://api.openai.com/v1</code> (or your provider's endpoint)</li><li>​<strong>API Key</strong>​: Your secret key (usually starts with <code>sk-...</code>)
+b. More trouble shooting at <a href="https://docs.openwebui.com/" target="_blank" rel="noopener">https://docs.openwebui.com/</a></li></ul></blockquote>
+</li><li><p><strong>LICENSE: ​<a href="https://github.com/open-webui/open-webui" target="_blank" rel="noopener">open-webui</a>​ is open-sourced at github under multiple licenses. For complete and updated licensing details, please see the</strong> <strong><a href="https://github.com/open-webui/open-webui/blob/main/LICENSE" target="_blank" rel="noopener">LICENSE</a>​ files.</strong></p></li></ol><h4 id="_323-start-scene-generation"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_323-start-scene-generation" data-id="_323-start-scene-generation" class="anchor"><span>3.2.3 Start Scene Generation</span></a></h4><ol><li><p>Check the assets retrieval results, before starting scene generation</p><p>a. By continuing chatting with "GenieSim Assistant", you can edit the retrieval results</p><p>b. Once confirmed, switch to "GenieSim Generator"</p><p>c. Say "​<em>generate the scene</em>​" to start generation</p><p><img src="./Genie Sim User Guide_files/7.png" style="width: 45%; height: 400px; object-fit: contain;"> <img src="./Genie Sim User Guide_files/8.png" style="width: 45%; height: 400px; object-fit: contain;"></p></li><li><p>Scene generation usually takes time depending on LLM and scene complexity</p><p>a. The context is maintained within the same chat window. You can make adjustments via dialogue, and be aware of the context limit of your model</p><p>b. Finally, save the results to <code>geniesim/generator/LLM_RESULT.py</code> by clicking the blue icon *<strong>(Save Codes to File)*​</strong>​ ​shown above, then a green bubble will show up indicating usda file is saved successfully</p><p><img src="./Genie Sim User Guide_files/9.png" style="width: 45%; height: 400px; object-fit: contain;"> <img src="./Genie Sim User Guide_files/10.png" style="width: 45%; height: 400px; object-fit: contain;"></p></li><li><p>Run generator to assemble the <code>scene_graph</code> and <code>scene usd assets</code>.</p><p><img src="./Genie Sim User Guide_files/12.png" style="width: 90%; height: 400px; object-fit: contain;"></p><p>a. The generator assembler uses the local built version of docker image <code>registry.agibot.com/genie-sim/open_source:latest</code>, make sure you've run through the installation section</p><p>b. We provide a real-time viewer, which can automatically generate and load the usda file if <code>geniesim/generator/LLM_RESULT.py</code> changes. Run following commands to start viewer:</p><pre v-pre="" data-lang="Bash"><code class="lang-Bash"># start the container
+cd genie_sim
+genie_sim$ ./scripts/start_gui.sh
+
+# run auto generator inside docker
+isaac-sim@user:/geniesim/main$ omni_python source/geniesim/generator/scene_viewer.py
+
+# The output folder path is shown in the log</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><blockquote>
+<p>Trigger once via commandline, run <code>isaac-sim@user:/geniesim/main$ ./scripts/run_generator.sh</code>
+c. During editing, click the <em>Save Codes to File</em> button to trigger the result preview, and the scene will be generated and loaded into IsaacSim. <img src="./Genie Sim User Guide_files/11.png" style="width: 90%; height: 400px; object-fit: contain;"></p></blockquote>
+</li></ol><h4 id="_324-mass-scale-scene-layout-generalization"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_324-mass-scale-scene-layout-generalization" data-id="_324-mass-scale-scene-layout-generalization" class="anchor"><span>3.2.4 Mass-scale scene layout generalization</span></a></h4><ol><li><p>Here's the instruction to enable support for massive joint generalization</p><p>a. First explicitly define the generalization rules, and be specific about the details</p><p>b. Use structural <code>Markdown</code> format and carefully edit the prompt, lower the temperature of your model if <em>necessary</em></p><p>c. If you wish to generate a scene with the assets list you provide, you can directly start the chat window with "GenieSim Generator" to skip the assets retrieval part</p><p>d. The underlying randomness uses random seeds to calculate random numbers. If your program fails to generate different scenes after each run, please check the system random interface</p></li><li><p>Prompt Demo 1, <em>provide object list and rules of randomization</em></p></li></ol><blockquote>
+<p>I’d like to create a simple scene using <strong>“table_000”</strong> with the following specifications:</p><ul><li>Randomly select <strong>two distinct objects</strong> from my list.</li><li>Place them ​<strong>near the center of the table</strong>​, slightly closer to the operator for easy access.</li><li>Add a small amount of <strong>random yaw rotation</strong> (e.g., uniformly distributed between 0° and 360°) to each object to give the arrangement a more natural, less staged appearance.</li><li>Ensure the two objects ​<strong>do not intersect or collide</strong>​—maintain clear separation between them.</li></ul><p>The object list is: <code>["apple", "blocks", "cola", "facecleaner", "sprite"]</code></p></blockquote>
+<ol><li>Prompt Demo2, <em>provide object list with natural language instructions</em></li></ol><blockquote>
+<p>I’d like to create a simple scene using “table_000” with the following setup:</p><ul><li>Randomly select one drink can from my object list.</li><li>Build a champagne tower using multiple copies of the chosen drink can.</li><li>Place a single apple on top of the tower.</li><li>Ensure all objects are neatly arranged on the tabletop.</li></ul><p>The available object list is: <code>["apple", "blocks", "cola", "facecleaner", "sprite"]</code></p></blockquote>
+<ol><li>Prompt Demo3, <em>provide object list and layout parameters</em></li></ol><blockquote>
+<p>I’d like to create a simple scene using “table_000” with the following setup:</p><ul><li>Randomly select 9 items from my object list.</li><li>Arrange the selected objects in a 3×3 grid on the table, with each grid cell measuring 20 cm per side.</li><li>Apply a small amount of random variation to each object’s position: ±2 cm (normally distributed) along both the X and Y axes.</li><li>Also randomize each object’s orientation by applying a uniformly distributed yaw rotation between 0° and 360°.</li></ul><p>The object list consists of: <code>["benchmark_building_blocks_001", "benchmark_building_blocks_002", ..., "benchmark_building_blocks_026"]</code>(i.e., items numbered from 1 to 30).</p></blockquote>
+<ol><li>If anything in the output goes unexpected, chat like normal to tell LLM to fix it</li><li>For massive generalization, execute the generated results multiple times. Each generated scene will be available at output path with index and random seed</li></ol><h3 id="_33-synthetic-data-collection"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_33-synthetic-data-collection" data-id="_33-synthetic-data-collection" class="anchor"><span>3.3 Synthetic Data Collection</span></a></h3><h4 id="_331-teleoperation"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_331-teleoperation" data-id="_331-teleoperation" class="anchor"><span>3.3.1 Teleoperation</span></a></h4><p>Support joystick control for robot waist, left/right end effector and base movement</p><p><img src="./Genie Sim User Guide_files/13.png" data-origin="./public/image/3/13.png" alt="pico"></p><table>
+<thead>
+<tr>
+<th><strong>No.</strong></th>
+<th><strong>​ ​Function</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>1</strong></td>
+<td>move base of the robot</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>control left gripper</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>backtracking action</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>reset left arm and right arm</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>enable left arm pose tracking</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>start recording</td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td>control the waist of the robot</td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td>control right gripper</td>
+</tr>
+<tr>
+<td><strong>9</strong></td>
+<td>reset body and head</td>
+</tr>
+<tr>
+<td><strong>10</strong></td>
+<td>enable right arm pose tracking</td>
+</tr>
+</tbody></table>
+<h5 id="_3311-pico-setup"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_3311-pico-setup" data-id="_3311-pico-setup" class="anchor"><span>3.3.1.1 Pico Setup</span></a></h5><ol><li>Connect to the same <strong>LAN</strong> as the computer</li><li>Start <strong>AIDEA Vision​ App</strong> in resource library</li><li>Choose <strong>Wireless Connection</strong> and enter the <strong>IP</strong> of the computer</li></ol><p><strong>Note</strong>: The AIDEA Vision App has been uploaded; you can access it here:<br><a href="https://modelscope.cn/datasets/agibot_world/GenieSim3.0-Dataset/tree/master/app" target="_blank" rel="noopener">https://modelscope.cn/datasets/agibot_world/GenieSim3.0-Dataset/tree/master/app</a>. APK installation for the Pico Enterprise Edition HMD can be performed via a computer. When the HMD is connected via USB, its internal storage becomes accessible as a standard drive on the computer. The APK file can then be installed by copying it directly to this drive.</p><h5 id="_3312-launch-setup"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_3312-launch-setup" data-id="_3312-launch-setup" class="anchor"><span>3.3.1.2 Launch Setup</span></a></h5><ol><li><strong>Data Collection</strong></li></ol><p>Execute the following command under genie_sim root directory outside the docker container</p><pre v-pre="" data-lang="Shell"><code class="lang-Shell">genie_sim$ ./scripts/autoteleop.sh</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>If you want to change tasks, please modify the <code>task_name</code> and <code>sub_task_name</code> fields in <code>./source/geniesim/config/teleop.yaml</code>.</p><ol><li><strong>Data Post Process</strong></li></ol><p>Execute the following command under genie_sim root directory outside the docker container</p><pre v-pre="" data-lang="Shell"><code class="lang-Shell">genie_sim$ ./scripts/autoteleop_post_process.sh {TASK_NAME}
+#for example
+genie_sim$ ./scripts/autoteleop_post_process.sh open_door</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>Note: ​</strong>To improve collection efficiency, data collection and data post-processing can be run in parallel.</p><h4 id="_332-automated-collection"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_332-automated-collection" data-id="_332-automated-collection" class="anchor"><span>3.3.2 Automated Collection</span></a></h4><h5 id="_3321-installation"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_3321-installation" data-id="_3321-installation" class="anchor"><span>3.3.2.1 Installation</span></a></h5><p>Make sure the <code>SIM_ASSETS</code> environment variable is set properly to the Genie Sim Assets path, and then enter data_collection directory:</p><pre v-pre="" data-lang="Bash"><code class="lang-Bash">export SIM_ASSETS=YOUR_PATH_TO_ASSETS （e.g. ~/genie_sim/source/geniesim/assets）
+cd genie_sim/source/data_collection
+genie_sim/source/data_collection$ sudo chmod -R +x ./scripts</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>Docker​ installation ​</strong></p><p><strong>Make sure​ the image in ​<a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_231-docker-container-recommended">2.3.1</a>​ is built</strong>​, and run the following code to build the data collection image.</p><pre v-pre="" data-lang="Bash"><code class="lang-Bash">genie_sim/source/data_collection$ docker build -f ./dockerfile -t registry.agibot.com/genie-sim/open_source-data-collection:latest .</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>Note:</strong> For cuRobo installation, the dockerfile is configured for <strong>RTX 4090D ​</strong>by default. If you're using a different GPU model, you need to modify the <code>TORCH_CUDA_ARCH_LIST</code> environment variable in the dockerfile, 50 series GPU (SM_120) may <strong>NOT</strong> be able to install or run cuRobo, this needs a compatibility update by the <a href="https://github.com/NVlabs/curobo" target="_blank" rel="noopener">cuRobo</a> team.</p><h5 id="_3322-data-collection"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_3322-data-collection" data-id="_3322-data-collection" class="anchor"><span>3.3.2.2​ Data Collection</span></a></h5><ol><li><strong>One-Click Data Collection (Recommended)</strong></li></ol><p>Use <code>run_data_collection.sh</code> to start data collection in one command.</p><p><strong>Usage:</strong></p><pre v-pre="" data-lang="Shell"><code class="lang-Shell">genie_sim/source/data_collection$ ./scripts/run_data_collection.sh [OPTIONS]</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>Options:</strong></p><ul><li><code>--headless</code> - Run in headless mode for better performance (default: false)</li><li><code>--no-record</code> - Disable recording (default: record enabled)</li><li><code>--task TASK_PATH</code> - Task template path (e.g. <code>tasks/geniesim_2025/sort_fruit/g2/sort_the_fruit_into_the_box_apple_g2.json</code>)</li><li><code>--standalone</code> - Run in standalone mode (only save logs, no terminal output) (default: false)</li><li><code>--container-name NAME</code> - Container name (default: <code>data_collection_open_source</code>)</li><li><code>--help, -h</code> - Show help message</li></ul><p><strong>Examples:</strong></p><pre v-pre="" data-lang="Shell"><code class="lang-Shell"># Run with default task in GUI mode
+genie_sim/source/data_collection$ ./scripts/run_data_collection.sh
+
+# Run with default task in GUI mode with custom task
+genie_sim/source/data_collection$ ./scripts/run_data_collection.sh --task tasks/geniesim_2025/sort_fruit/g2/sort_the_fruit_into_the_box_apple_g2.json
+
+# Run in headless mode with custom task
+genie_sim/source/data_collection$ ./scripts/run_data_collection.sh --headless --task tasks/geniesim_2025/sort_fruit/g2/sort_the_fruit_into_the_box_apple_g2.json
+
+# Run in standalone headless mode (logs only, no terminal output)
+genie_sim/source/data_collection$ ./scripts/run_data_collection.sh --standalone --headless
+
+# Run without recording
+genie_sim/source/data_collection$ ./scripts/run_data_collection.sh --no-record</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>Logs:</strong> Logs are saved to <code>logs/{TASK_NAME}/</code> directory:</p><ul><li><code>run_data_collection_sh.log</code> - Script output</li><li><code>container.log</code> - Container logs</li><li><code>data_collector_server.log</code> - Data collector server logs (if available)</li><li><code>run_data_collection.log</code> - run data collection application logs (if available)</li></ul><p><strong>Outputs:</strong> Outputs are save to <code>recording_data/[{TASK_NAME}_{INDEX}]/</code> directory</p><ol><li><strong>Interactive Mode</strong></li></ol><p>Use <code>start_gui.sh</code> to launch an interactive container for debugging or development.</p><p><strong>Usage:</strong></p><pre v-pre="" data-lang="Shell"><code class="lang-Shell">genie_sim/source/data_collection$ ./scripts/start_gui.sh [ACTION] [CONTAINER_NAME]</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>Actions:</strong></p><ul><li><code>run</code> (default) - Create and run a new container</li><li><code>exec</code> - Enter an existing container</li><li><code>start</code> - Start a stopped container</li><li><code>restart</code> - Restart a container</li></ul><p><strong>Parameters:</strong></p><ul><li><code>ACTION</code> - One of: <code>exec</code>, <code>start</code>, <code>restart</code>, <code>run</code> (default: <code>run</code>)</li><li><code>CONTAINER_NAME</code> - Container name (default: <code>data_collection_open_source</code>)</li></ul><p><strong>Examples:</strong></p><pre v-pre="" data-lang="Shell"><code class="lang-Shell"># Create and run a new container (default)
+genie_sim/source/data_collection$ ./scripts/start_gui.sh run my_container
+
+# Enter an existing container
+genie_sim/source/data_collection$ ./scripts/start_gui.sh exec my_container
+
+# Start a stopped container
+genie_sim/source/data_collection$ ./scripts/start_gui.sh start my_container
+
+# Restart a container
+genie_sim/source/data_collection$ ./scripts/start_gui.sh restart my_container</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>Running Services Inside Container:</strong></p><p>After entering the container using <code>exec</code>, you need to start two services in separate terminals:</p><p><strong>Terminal 1 - Start the container and run data collector server:</strong></p><pre v-pre="" data-lang="Shell"><code class="lang-Shell"># Enter the container
+genie_sim/source/data_collection$ ./scripts/start_gui.sh exec my_container
+
+# Inside container, start data collector server
+isaac-sim@user:/geniesim/main/data_collection$ python scripts/data_collector_server.py --enable_physics --enable_curobo --publish_ros</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>Terminal 2 - Enter the same container and run data collection application:</strong></p><pre v-pre="" data-lang="Shell"><code class="lang-Shell"># Enter the same container (in a new terminal)
+genie_sim/source/data_collection$ ./scripts/start_gui.sh​ ​exec my_container
+
+# Inside container, run main application
+isaac-sim@user:/geniesim/main/data_collection$ python scripts/run_data_collection.py --task_template tasks/geniesim_2025/sort_fruit/g2/sort_the_fruit_into_the_box_apple_g2.json --use_recording</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>Note:</strong> Both terminals need to <code>exec</code> into the same container. Make sure the container is running before executing these commands.</p><p>For more info about <strong>local installation</strong> and <strong>task configuration, ​</strong>see <code>source/data_collection/README.md</code></p><h3 id="_34-scene-reconstruction"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_34-scene-reconstruction" data-id="_34-scene-reconstruction" class="anchor"><span>3.4 Scene Reconstruction</span></a></h3><h4 id="_341-data-introduction"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_341-data-introduction" data-id="_341-data-introduction" class="anchor"><span>3.4.1 Data Introduction</span></a></h4><ol><li>Data Acquisition</li></ol><p>Collect data using Skyland Innovation's MetaCam handheld 3D laser scanner.</p><ol><li>Data Format</li></ol><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token comment"># The following data is the result of processing the collected raw data using</span>
+<span class="token comment"># Skylandx's software.</span>
+
+├── camera
+│   └── left
+│       ├── <span class="token number">1763982134704786000</span>.jpg    <span class="token comment"># fisheye image</span>
+│       ├── <span class="token punctuation">..</span>.
+│       ├── <span class="token punctuation">..</span>.
+│       ├── <span class="token number">1763982135704717000</span>.jpg
+├── colorized.las    <span class="token comment"># color point cloud data</span>
+├── info
+│   ├── calibration.json   <span class="token comment"># Calibration information between multiple sensors.  eg: camera intrinsic</span>
+│   ├── device_info.json
+│   └── rtk_info.json
+└── transforms.json  <span class="token comment"># camera pose info, camera pose is CG convention, Our open-source code will  automatically to convert it.</span></code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><h4 id="_342-environment-installation"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_342-environment-installation" data-id="_342-environment-installation" class="anchor"><span>3.4.2 Environment Installation</span></a></h4><p>House.zip contains the demo data required to run the scene reconstruction examples in this guide.</p><p><a href="https://modelscope.cn/datasets/agibot_world/GenieSim3.0-Dataset/tree/master/reconstruction_source_data" target="_blank" rel="noopener">House.zip</a></p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token comment"># Pull codebase</span>
+<span class="token comment"># Scene reconstruction repo</span>
+<span class="token function">git</span> clone https://github.com/AgibotTech/genie_sim.git
+<span class="token builtin class-name">cd</span> genie_sim/source/scene_reconstruction
+
+<span class="token comment"># BUild docker image</span>
+<span class="token function">docker</span> build <span class="token builtin class-name">.</span> <span class="token parameter variable">-t</span>  docker-image-name
+
+<span class="token comment"># Unzip House.zip and launch container</span>
+<span class="token function">docker</span> run <span class="token parameter variable">--rm</span> <span class="token parameter variable">--gpus</span> all <span class="token parameter variable">-it</span> --shm-size<span class="token operator">=</span>32g <span class="token parameter variable">-v</span> <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>/House:/mnt registry.agibot.com/real2sim/cuda:11.8.0-cudnn8-devel-ubuntu22.04-benchmark
+
+<span class="token comment"># Download weights of Difix3d and place them in the  genie_sim/source/scene_reconstruction/third_party/Difix3D/hf_model  directory</span>
+hf_model/
+<span class="token operator">|</span>-- LICENSE.txt
+<span class="token operator">|</span>-- NOTICE
+<span class="token operator">|</span>-- README.md
+<span class="token operator">|</span>-- model_index.json
+<span class="token operator">|</span>-- scheduler
+<span class="token operator">|</span>-- text_encoder
+<span class="token operator">|</span>-- tokenizer
+<span class="token operator">|</span>-- unet
+`-- vae</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><h4 id="_343-run-scene-reconstruction"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_343-run-scene-reconstruction" data-id="_343-run-scene-reconstruction" class="anchor"><span>3.4.3 Run Scene Reconstruction</span></a></h4><p>Run the following command inside the container to implement scene reconstruction.</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token comment"># /mnt -&gt; data_path     1 -&gt; Enable DIfix3D (0 to disable)</span>
+<span class="token builtin class-name">cd</span> /root/third_party/gsplat/examples
+<span class="token function">sh</span> real2sim_environment_entrypoint.sh  /mnt  <span class="token number">1</span></code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>To covert PLY file to USDZ and import into Isaac Sim, follow the “Converting PLY Files to USDZ” section in the NVIDIA <a href="https://github.com/nv-tlabs/3dgrut?tab=readme-ov-file#converting-ply-files-to-usdz" target="_blank" rel="noopener">3DGRUT repository</a> (nv-tlabs/3dgrut).</p><pre v-pre="" data-lang="bash"><code class="lang-bash">python <span class="token parameter variable">-m</span> threedgrut.export.scripts.ply_to_usd path/to/your/model.ply <span class="token parameter variable">--output_file</span> path/to/output.usdz</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><h3 id="_35-agibot-world-challenge-reasoning-to-action-tasks-icra"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_35-agibot-world-challenge-reasoning-to-action-tasks-icra" data-id="_35-agibot-world-challenge-reasoning-to-action-tasks-icra" class="anchor"><span>3.5 AgiBot World Challenge Reasoning to Action Tasks (ICRA)</span></a></h3><blockquote>
+<p><strong>NOTE: The ICRA challenge is based on GenieSim 3.0.3. Please make sure you are using the correct version (latest commit:</strong> <strong><code>8bf3e57a</code>).</strong></p></blockquote>
+<h4 id="_351-run-baseline-model-inference"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_351-run-baseline-model-inference" data-id="_351-run-baseline-model-inference" class="anchor"><span>3.5.1 Run Baseline Model Inference</span></a></h4><ol><li>Docker Image Preparation</li></ol><p>Baseline model checkpoints and inference scripts are integrated into one unified docker image, which can be obtained by following steps:</p><p>On the My submission page of the Test Server, click Get Registry Token to obtain the docker login credentials，then pull the image through the following command. (Note that the validity period of the voucher is 1 hour)</p><pre v-pre="" data-lang="Shell"><code class="lang-Shell">docker pull sim-icra-registry.cn-beijing.cr.aliyuncs.com/icra-admin/openpi_server:latest</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><ol><li>Start model inference</li></ol><p>Start docker container will automatically launch the inference service</p><pre v-pre="" data-lang="Shell"><code class="lang-Shell">docker run -it --network=host  --gpus all -e XLA_PYTHON_CLIENT_MEM_FRACTION=0.3 {docker container name}</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Adjust <code>XLA_PYTHON_CLIENT_MEM_FRACTION</code> according to your machine GPU memory to run both inference and simulation on one machine.</p><p>The following info in terminal indicates the successful launch of the Inference service:</p><p><code>INFO:websockets.server:server listening on 0.0.0.0:8999</code></p><h4 id="_352-run-icra-tasks"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_352-run-icra-tasks" data-id="_352-run-icra-tasks" class="anchor"><span>3.5.2 Run ICRA tasks</span></a></h4><ol><li>Start simulation docker container</li></ol><pre v-pre="" data-lang="Bash"><code class="lang-Bash">genie_sim$ ./scripts/start_gui.sh</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><ol><li><p>After starting inference service, enter the docker container to launch all ICRA tasks</p><p>a. Config VLM checker
+Set OpenAI configs for VLM auto scoring, see Section 3.1.4 for details.</p><pre v-pre="" data-lang="Shell"><code class="lang-Shell">export BASE_URL=xxx
+export VL_MODEL=xxx
+export API_KEY=xxx</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Two tasks, <code>scoop_popcorn</code> and <code>clean_the_desktop</code> are evaluated by VLM while other tasks are evaluated by rules. The absence of VLM configuration will not affect the simulation run, but the evaluation will be missing.</p><p>b. Launch ICRA tasks</p></li></ol><pre v-pre="" data-lang="Shell"><code class="lang-Shell"># Enter simulation container
+genie_sim$ ./scripts/into.sh
+# Run ICRA tasks with inference service from localhost:8999
+/geniesim/main$ ./scripts/run_icra_tasks.sh
+# Run ICRA tasks with inference service from other host machine
+/geniesim/main$ ./scripts/run_icra_tasks.sh --infer-host xxx.xxx.xxx.xxx:8999</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><ol><li>Scores will be automatically collected when all tasks are finished. It can also be triggered by command below</li></ol><pre v-pre="" data-lang="Shell"><code class="lang-Shell"># Use default directory: output/benchmark
+/geniesim/main$ python3 scripts/stat_average.py
+
+# Specify a custom directory
+/geniesim/main$ python3 scripts/stat_average.py /path/to/your/output</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><ol><li>Evaluation process will be automatically terminated when SIGINT (Ctrl+C) signal is received.</li></ol><h4 id="_353-integrate-your-own-policy"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_353-integrate-your-own-policy" data-id="_353-integrate-your-own-policy" class="anchor"><span>3.5.3 Integrate Your Own Policy</span></a></h4><p>Prepare the docker image of your policy, including dependency, inference scripts and checkpoints etc.</p><ol><li>Inference and simulation are separated into two containers, where websockets serve as the communication tool. Consequently, inference must be implemented in the form of a websocket service. An example can be found at <code>scripts/serve_policy.py</code> in the inference container.</li><li>Observations that can be obtained from simulation environments</li></ol><ul><li>Observation Structure<pre v-pre="" data-lang="python"><code class="lang-python">payload <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string">"state"</span><span class="token punctuation">:</span> robot joint state<span class="token punctuation">,</span>
+  <span class="token string">"eef"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token string">"left"</span><span class="token punctuation">:</span> left_eef<span class="token punctuation">,</span>
+      <span class="token string">"right"</span><span class="token punctuation">:</span> right_eef<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"images"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token string">"top_head"</span><span class="token punctuation">:</span> rgb image <span class="token keyword">from</span> head<span class="token punctuation">,</span>
+      <span class="token string">"hand_left"</span><span class="token punctuation">:</span> rgb image <span class="token keyword">from</span> left wrist<span class="token punctuation">,</span>
+      <span class="token string">"hand_right"</span><span class="token punctuation">:</span> rgb image <span class="token keyword">from</span> right wrist<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"depth"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token string">"top_head"</span><span class="token punctuation">:</span> depth <span class="token keyword">from</span> head<span class="token punctuation">,</span>
+      <span class="token string">"hand_left"</span><span class="token punctuation">:</span> depth <span class="token keyword">from</span> left wrist<span class="token punctuation">,</span>
+      <span class="token string">"hand_right"</span><span class="token punctuation">:</span> depth <span class="token keyword">from</span> right wrist
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"prompt"</span><span class="token punctuation">:</span> task_instruction<span class="token punctuation">,</span>
+  <span class="token string">"task_name"</span><span class="token punctuation">:</span> task_name
+<span class="token punctuation">}</span></code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre></li><li>Observation Info</li></ul><table>
+<thead>
+<tr>
+<th><strong>key</strong></th>
+<th><strong>type</strong></th>
+<th><strong>shape</strong></th>
+<th><strong>comments</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>state</td>
+<td>nparray</td>
+<td>(32, )</td>
+<td>0-7 left arm; 7-14 right arm; 14-15 left gripper; 15-16 right gripper; 16-21 waist joint</td>
+</tr>
+<tr>
+<td>left_eef</td>
+<td>list</td>
+<td>7</td>
+<td>x, y, z, qw, qx, qy, qz</td>
+</tr>
+<tr>
+<td>right_eef</td>
+<td>list</td>
+<td>7</td>
+<td>x, y, z, qw, qx, qy, qz</td>
+</tr>
+<tr>
+<td>images-top_head</td>
+<td>nparray</td>
+<td>(3, H, W)</td>
+<td>rgb image from head camera</td>
+</tr>
+<tr>
+<td>images-hand_left</td>
+<td>nparray</td>
+<td>(3, H, W)</td>
+<td>rgb image from left wrist camera</td>
+</tr>
+<tr>
+<td>images-hand_right</td>
+<td>nparray</td>
+<td>(3, H, W)</td>
+<td>rgb image from right wrist camera</td>
+</tr>
+<tr>
+<td>depth-top_head</td>
+<td>nparray</td>
+<td>(H, W)</td>
+<td>depth from head wrist camera</td>
+</tr>
+<tr>
+<td>depth-hand_left</td>
+<td>nparray</td>
+<td>(H, W)</td>
+<td>depth from left wrist camera</td>
+</tr>
+<tr>
+<td>depth-hand_right</td>
+<td>nparray</td>
+<td>(H, W)</td>
+<td>depth from right wrist camera</td>
+</tr>
+<tr>
+<td>prompt</td>
+<td>string</td>
+<td>/</td>
+<td>task instructions</td>
+</tr>
+<tr>
+<td>task_name</td>
+<td>string</td>
+<td>/</td>
+<td>task name</td>
+</tr>
+</tbody></table>
+<ol><li>Commands that simulation environments receive</li></ol><ul><li>Command structure<pre v-pre="" data-lang="Shell"><code class="lang-Shell">result = {
+    # action chunk
+    "actions":[
+        [cmd],
+        [cmd],
+        [cmd],
+        ...
+    ]
+}</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre></li><li>Command type
+Two types of commands are supported:<ul><li>Abs joint
+For abs joint command, the command order is identical to joint state order specified above.</li><li>Abs eef
+For abs eef command, the command order is as follows<table>
+<thead>
+<tr>
+<th><strong>Index Range</strong></th>
+<th><strong>Name ​</strong></th>
+<th><strong>Meaning</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0-6</td>
+<td>xyzrpy</td>
+<td>Left arm eef</td>
+</tr>
+<tr>
+<td>6-12</td>
+<td>xyzrpy</td>
+<td>Right arm eef</td>
+</tr>
+<tr>
+<td>12-13</td>
+<td>idx41_gripper_l_outer_joint1</td>
+<td>Left gripper</td>
+</tr>
+<tr>
+<td>13-14</td>
+<td>idx81_gripper_r_outer_joint1</td>
+<td>Right gripper</td>
+</tr>
+<tr>
+<td>14-19</td>
+<td>idx01_body_joint1 - idx05_body_joint5</td>
+<td>Waist</td>
+</tr>
+</tbody></table>
+</li></ul></li></ul><p>Tools are provided to convert ik/fk for robot at path <code>source/geniesim/utils/g2_ikfk_converter.py</code>, check the script for detailed usage.</p><h4 id="_354-submit-your-policy"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_354-submit-your-policy" data-id="_354-submit-your-policy" class="anchor"><span>3.5.4 Submit Your Policy</span></a></h4><ul><li><strong>Obtain Credentials</strong>: You can obtain your Docker login credentials by clicking the <strong>"Get Registry Token"</strong> button on the <strong>My Submissions</strong> page of the Test Server. (Note that the validity period of the voucher is 1 hour)</li><li><strong>Build the Image</strong>: Integrate all necessary components—including dependencies, model checkpoints, and inference scripts—into a single Docker image.</li><li><strong>Configure Port and Entrypoint</strong>:<ol><li><strong>Port Requirement</strong>: Your inference service <strong>must</strong> be configured to listen on port <strong>8999</strong>.</li><li><strong>Startup</strong>: Ensure the Docker image is configured to start the inference container directly via an <code>ENTRYPOINT</code> or <code>CMD</code> instruction, without requiring any additional commands at runtime.</li></ol></li><li><strong>Tag and Push</strong>: Tag your image according to the registry endpoint and namespace provided. For example, if your registry endpoint is <code>registry.test.com</code> and your namespace is <code>test1</code>, your image should be tagged and pushed as follows:<ol><li><strong>Tag format</strong>: <code>registry.test.com/test1/{image_name}:tag</code></li><li><strong>Command</strong>: <code>docker push registry.test.com/test1/{image_name}:tag</code></li></ol></li><li><strong>Specify Model Type</strong>: Choose your model type <code>abs_joint</code> or <code>abs_pose</code> on the submission page according to your model.</li></ul><p><strong>Troubleshooting &amp; Optimization</strong></p><ul><li><strong>Credential Expiration:</strong> If the image is too large to complete the upload within the credential's validity period, simply refresh your login credentials and re-initiate the push. Docker's layer-based architecture ensures that previously successful layers are preserved; only the remaining layers will be transmitted.</li><li><strong>Image Optimization:</strong> If the push continues to fail, please optimize the Docker image to reduce its footprint. We recommend:<ul><li>Cleaning up builds caches and unnecessary dependencies.</li><li>Implementing <strong>multi-stage builds</strong> to minimize the final image size.</li></ul></li></ul><h3 id="_36-reinforcement-learning-with-rlinf"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_36-reinforcement-learning-with-rlinf" data-id="_36-reinforcement-learning-with-rlinf" class="anchor"><span>3.6 Reinforcement Learning with RLinf</span></a></h3><p>This section describes how to run reinforcement learning training on GenieSim using the RLinf framework. The example task is <code>Place Workpiece</code> — control the G2 robot's right arm to place a workpiece into a target slot.</p><p>Key features:</p><ul><li>Isaac Sim + MuJoCo dual-simulator: Isaac Sim for high-fidelity rendering (30 Hz), MuJoCo for high-frequency physics (1000 Hz)</li><li>SpaceMouse human-in-the-loop: the operator can intervene during RL training in real time</li><li>RLPD + BC regularization: demonstrations feed both demo buffer (symmetric sampling) and behavioral cloning loss</li><li>SAC + CNN Encoder: ResNet-10 encodes wrist camera images, SAC optimizes continuous actions</li></ul><h4 id="_361-repository-setup"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_361-repository-setup" data-id="_361-repository-setup" class="anchor"><span>3.6.1 Repository Setup</span></a></h4><p>Clone both GenieSim and RLinf repositories into the same parent directory:</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token function">mkdir</span> workspace <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> workspace
+<span class="token function">git</span> clone https://github.com/AgibotTech/genie_sim.git
+<span class="token function">git</span> clone <span class="token parameter variable">-b</span> dev/geniesim https://github.com/RLinf/RLinf.git</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Directory layout:</p><pre v-pre="" data-lang=""><code class="lang-">workspace/
+├── genie_sim/     # GenieSim repository
+└── RLinf/         # RLinf repository</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Make sure GenieSim assets are downloaded at <code>genie_sim/source/geniesim/assets</code> (see Section 2.2).</p><h4 id="_362-docker-image-build"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_362-docker-image-build" data-id="_362-docker-image-build" class="anchor"><span>3.6.2 Docker Image Build</span></a></h4><p>The RLinf integration uses a two-layer Docker image:</p><ul><li><strong>Layer 1 (base):</strong> GenieSim + Isaac Sim + MuJoCo + ROS 2</li><li><strong>Layer 2 (training):</strong> RLinf + PyTorch + training dependencies</li></ul><p><strong>Step 1 — Build GenieSim base image</strong></p><p>Follow Section 2.3.1 to build the GenieSim base image first.</p><p><strong>Step 2 — Build RLinf integration image</strong></p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token builtin class-name">cd</span> workspace/
+<span class="token function">bash</span> genie_sim/scripts/build_geniesim_rlinf_image.sh</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Output: <code>geniesim-rlinf:latest</code></p><p><strong>Step 3 — Build training image</strong></p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token builtin class-name">cd</span> workspace/RLinf
+<span class="token function">docker</span> build <span class="token punctuation">\</span>
+  --build-arg <span class="token assign-left variable">BUILD_TARGET</span><span class="token operator">=</span>embodied-geniesim <span class="token punctuation">\</span>
+  <span class="token parameter variable">-t</span> geniesim-rlinf-train:latest <span class="token punctuation">\</span>
+  <span class="token parameter variable">-f</span> docker/Dockerfile <span class="token punctuation">\</span>
+  <span class="token builtin class-name">.</span></code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>Step 4 — Verify</strong></p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token function">docker</span> run <span class="token parameter variable">--rm</span> <span class="token parameter variable">--gpus</span> all geniesim-rlinf-train:latest nvidia-smi</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><h4 id="_363-spacemouse-setup"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_363-spacemouse-setup" data-id="_363-spacemouse-setup" class="anchor"><span>3.6.3 SpaceMouse Setup</span></a></h4><p>The SpaceMouse communicates via HID. Install the required library and configure udev rules <strong>on the host machine</strong> (not inside the container):</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> libhidapi-dev</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Create a udev rule:</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token function">sudo</span> <span class="token function">tee</span> /etc/udev/rules.d/99-spacemouse.rules <span class="token operator">&gt;</span> /dev/null <span class="token operator">&lt;&lt;</span><span class="token string">'EOF'
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="256f", ATTRS{idProduct}=="c635", MODE="0666"
+SUBSYSTEM=="input",  ATTRS{idVendor}=="256f", ATTRS{idProduct}=="c635", MODE="0666"
+EOF</span></code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Reload:</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token function">sudo</span> udevadm control --reload-rules
+<span class="token function">sudo</span> udevadm trigger
+<span class="token function">ls</span> <span class="token parameter variable">-l</span> /dev/hidraw*   <span class="token comment"># should show 0666 permissions</span></code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><h4 id="_364-download-pretrained-weights"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_364-download-pretrained-weights" data-id="_364-download-pretrained-weights" class="anchor"><span>3.6.4 Download Pretrained Weights</span></a></h4><p>Download the ResNet-10 CNN encoder weights used by the SAC policy:</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token comment"># Method 1: git clone</span>
+<span class="token function">git</span> lfs <span class="token function">install</span>
+<span class="token function">git</span> clone https://huggingface.co/RLinf/RLinf-ResNet10-pretrained
+
+<span class="token comment"># Method 2: huggingface-hub</span>
+<span class="token comment"># For mainland China: export HF_ENDPOINT=https://hf-mirror.com</span>
+pip <span class="token function">install</span> huggingface-hub
+huggingface-cli download RLinf/RLinf-ResNet10-pretrained --local-dir RLinf-ResNet10-pretrained</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Place the downloaded directory under <code>RLinf/examples/embodiment/config/</code> (or update the path in training config accordingly).</p><h4 id="_365-collect-demonstration-data"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_365-collect-demonstration-data" data-id="_365-collect-demonstration-data" class="anchor"><span>3.6.5 Collect Demonstration Data</span></a></h4><p>Connect the SpaceMouse via USB, then run:</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token builtin class-name">cd</span> workspace/
+<span class="token function">bash</span> RLinf/rlinf/envs/geniesim/scripts/run.sh collect --num-demos <span class="token number">50</span></code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Optional — specify a custom save directory:</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token function">bash</span> RLinf/rlinf/envs/geniesim/scripts/run.sh collect --num-demos <span class="token number">50</span> --save-dir /geniesim/RLinf/my_demos</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>SpaceMouse controls:</strong></p><table>
+<thead>
+<tr>
+<th align="left"><strong>Action</strong></th>
+<th align="left"><strong>Effect</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Translate device</td>
+<td align="left">Move right arm end-effector (x/y/z)</td>
+</tr>
+<tr>
+<td align="left">Rotate device</td>
+<td align="left">Rotate right arm end-effector (roll/pitch/yaw)</td>
+</tr>
+<tr>
+<td align="left">Press left button</td>
+<td align="left">Save demo → environment resets</td>
+</tr>
+<tr>
+<td align="left">Press right button</td>
+<td align="left">Discard demo → environment resets</td>
+</tr>
+</tbody></table>
+<p>Demos are saved to <code>workspace/RLinf/sac_demo/</code> on the host (mapped from <code>/geniesim/RLinf/sac_demo</code> inside the container).</p><h4 id="_366-convert-demonstration-data"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_366-convert-demonstration-data" data-id="_366-convert-demonstration-data" class="anchor"><span>3.6.6 Convert Demonstration Data</span></a></h4><p>Convert collected demonstrations into a replay buffer for SAC training:</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token function">bash</span> RLinf/rlinf/envs/geniesim/scripts/run.sh convert</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>Reads from <code>/geniesim/RLinf/sac_demo</code> and outputs to <code>/geniesim/RLinf/sac_demo_buffer</code> by default. Customize paths:</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token function">bash</span> RLinf/rlinf/envs/geniesim/scripts/run.sh convert <span class="token punctuation">\</span>
+  --demo-dir /geniesim/RLinf/my_demos <span class="token punctuation">\</span>
+  --output-dir /geniesim/RLinf/my_demos_buffer</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><h4 id="_367-start-training"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_367-start-training" data-id="_367-start-training" class="anchor"><span>3.6.7 Start Training</span></a></h4><p>Before starting training, edit the training config file <code>RLinf/examples/embodiment/config/geniesim_sac_spacemouse.yaml</code> and update the following paths (RLinf is mounted at <code>/geniesim/RLinf</code> inside the container):</p><ul><li><code>rollout.model.model_path</code> and <code>actor.model.model_path</code>: set to the pretrained model directory, e.g. <code>/geniesim/RLinf/examples/embodiment/config/RLinf-ResNet10-pretrained</code></li><li><code>algorithm.demo_buffer.load_path</code>: set to the converted buffer directory, e.g. <code>/geniesim/RLinf/sac_demo_buffer</code></li></ul><p>Then start training:</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token function">bash</span> RLinf/rlinf/envs/geniesim/scripts/run.sh train</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>During training, env_0 accepts real-time SpaceMouse intervention while remaining environments are driven by the policy.</p><p><strong>Override Hydra parameters:</strong></p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token comment"># Adjust discount factor</span>
+<span class="token function">bash</span> RLinf/rlinf/envs/geniesim/scripts/run.sh train <span class="token assign-left variable">algorithm.gamma</span><span class="token operator">=</span><span class="token number">0.97</span>
+
+<span class="token comment"># Adjust BC regularization coefficient</span>
+<span class="token function">bash</span> RLinf/rlinf/envs/geniesim/scripts/run.sh train <span class="token assign-left variable">algorithm.bc_coef</span><span class="token operator">=</span><span class="token number">5.0</span>
+
+<span class="token comment"># Change log path</span>
+<span class="token function">bash</span> RLinf/rlinf/envs/geniesim/scripts/run.sh train <span class="token assign-left variable">runner.logger.log_path</span><span class="token operator">=</span><span class="token punctuation">..</span>/my_results</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><h4 id="_368-monitoring-and-debugging"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_368-monitoring-and-debugging" data-id="_368-monitoring-and-debugging" class="anchor"><span>3.6.8 Monitoring and Debugging</span></a></h4><p><strong>TensorBoard</strong></p><p>Start TensorBoard to monitor training progress:</p><pre v-pre="" data-lang="bash"><code class="lang-bash">tensorboard <span class="token parameter variable">--logdir</span> workspace/results/</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p><strong>Debug Shell</strong></p><p>Start an interactive shell inside the container for debugging:</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token function">bash</span> RLinf/rlinf/envs/geniesim/scripts/run.sh shell</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><p>View simulation logs of a running container:</p><pre v-pre="" data-lang="bash"><code class="lang-bash"><span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> <span class="token operator">&lt;</span>container_name<span class="token operator">&gt;</span> <span class="token function">bash</span>
+<span class="token function">ls</span> /tmp/geniesim_logs/</code><button class="docsify-copy-code-button"><span class="label">Copy to clipboard</span><span class="error" aria-hidden="hidden">Error</span><span class="success" aria-hidden="hidden">Copied</span><span aria-live="polite"></span></button></pre><h4 id="_369-command-reference"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_369-command-reference" data-id="_369-command-reference" class="anchor"><span>3.6.9 Command Reference</span></a></h4><table>
+<thead>
+<tr>
+<th align="left"><strong>Command</strong></th>
+<th align="left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>run.sh collect --num-demos N</code></td>
+<td align="left">Collect N demonstrations via SpaceMouse</td>
+</tr>
+<tr>
+<td align="left"><code>run.sh convert</code></td>
+<td align="left">Convert demo files to replay buffer</td>
+</tr>
+<tr>
+<td align="left"><code>run.sh train [hydra overrides...]</code></td>
+<td align="left">Start SAC + SpaceMouse HIL training</td>
+</tr>
+<tr>
+<td align="left"><code>run.sh shell</code></td>
+<td align="left">Interactive container shell</td>
+</tr>
+<tr>
+<td align="left"><code>run.sh help</code></td>
+<td align="left">Show all commands</td>
+</tr>
+</tbody></table>
+<h4 id="_3610-key-configuration-files"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_3610-key-configuration-files" data-id="_3610-key-configuration-files" class="anchor"><span>3.6.10 Key Configuration Files</span></a></h4><table>
+<thead>
+<tr>
+<th align="left"><strong>File</strong></th>
+<th align="left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>examples/embodiment/config/env/geniesim_place_workpiece.yaml</code></td>
+<td align="left">Environment config (obs/action dims, SHM settings, body names)</td>
+</tr>
+<tr>
+<td align="left"><code>examples/embodiment/config/geniesim_sac_spacemouse.yaml</code></td>
+<td align="left">Training config (algorithm, model paths, demo buffer)</td>
+</tr>
+<tr>
+<td align="left"><code>examples/embodiment/config/model/cnn_policy.yaml</code></td>
+<td align="left">Model config (ResNet-10 encoder, actor/critic architecture)</td>
+</tr>
+</tbody></table>
+<h4 id="_3611-troubleshooting"><a href="https://agibot-world.cn/sim-evaluation/docs/#/v3?id=_3611-troubleshooting" data-id="_3611-troubleshooting" class="anchor"><span>3.6.11 Troubleshooting</span></a></h4><table>
+<thead>
+<tr>
+<th align="left"><strong>Problem</strong></th>
+<th align="left"><strong>Fix</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>PermissionError</code> on <code>/dev/shm/geniesim_*</code></td>
+<td align="left">Run: <code>bash RLinf/rlinf/envs/geniesim/scripts/cleanup_stale.sh</code></td>
+</tr>
+<tr>
+<td align="left">Stale <code>.geniesim_idle</code> causing hang</td>
+<td align="left">Same cleanup script above</td>
+</tr>
+<tr>
+<td align="left">Isaac Sim startup timeout</td>
+<td align="left">Increase <code>startup_timeout_sec</code> in env YAML</td>
+</tr>
+<tr>
+<td align="left">GPU out of memory</td>
+<td align="left">Reduce <code>env.train.total_num_envs</code> via Hydra override</td>
+</tr>
+</tbody></table>
+</article></section></main>
+  <script>
+    window.$docsify = {
+      name: "Genie Sim Benchmark", // 左侧侧边栏最顶部的文字
+      nameLink: '#/v3',
+      repo: "", // 右上角的挂件（跳转链接）
+      el: "#app", // 欢迎页
+      topMargin: 55, // 让你的内容页在滚动到指定的锚点时，距离页面顶部有一定空间
+      mergeNavbar: true, // 小屏设备下合并导航栏到侧边栏
+      auto2top: true, // 切换页面后是否自动跳转到页面顶部
+      // routerMode: 'history',
+      // search.min.js插件
+      search: {
+        maxAge: 86400000, // 过期时间，单位毫秒，默认一天
+        paths: ['/', '/v2', '/v3'], // 需要搜索的文件路径
+        placeholder: "Search",
+        noData: "No Results",
+        // 搜索标题的最大层级, 1 - 6
+        depth: 4,
+      },
+    };
+  </script>
+  <!-- Docsify v4 -->
+  <script src="./Genie Sim User Guide_files/docsify@4"></script>
+  <script src="./Genie Sim User Guide_files/search.min.js.下载"></script>
+  <script src="./Genie Sim User Guide_files/prism-bash.min.js.下载"></script>
+  <script src="./Genie Sim User Guide_files/prism-json.min.js.下载"></script>
+  <script src="./Genie Sim User Guide_files/prism-python.min.js.下载"></script>
+  <script src="./Genie Sim User Guide_files/docsify-copy-code.min.js.下载"></script>
+<script src="https://agibot-world.cn:35729/livereload.js?snipver=1" async="" defer=""></script>
+
+<div class="progress" style="opacity: 0; width: 0%;"></div></body></html>
