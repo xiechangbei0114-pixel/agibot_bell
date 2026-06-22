@@ -11,3 +11,9 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
+# 克隆的 VLA 源码（非本仓库代码）
+week_2/acot_vla_src/
+week_2/genie_sim_src/
+week_2/gr00t_src/
+week_2/openpi_src/
