@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>2 连杆机械臂 FK/IK 交互仿真</title>
+<style>
+  body { margin:0; display:flex; justify-content:center; align-items:center; height:100vh; background:#1a1a2e; font-family:'Segoe UI',sans-serif; }
+  .container { background:#16213e; border-radius:16px; padding:24px; box-shadow:0 8px 32px rgba(0,0,0,0.5); }
+  canvas { display:block; margin:0 auto; border-radius:8px; cursor:grab; background:#0f3460; }
+  .controls { display:flex; gap:16px; margin-top:16px; flex-wrap:wrap; justify-content:center; }
+  .ctrl-group { background:#1a1a40; padding:12px 16px; border-radius:8px; min-width:140px; }
+  .ctrl-group label { color:#a8b2d1; font-size:13px; display:block; margin-bottom:4px; }
+  .ctrl-group input[type=range] { width:120px; }
+  .ctrl-group .value { color:#64ffda; font-size:14px; font-weight:bold; }
+  button { background:#64ffda; color:#1a1a2e; border:none; padding:8px 20px; border-radius:6px; font-weight:bold; cursor:pointer; }
+  button:hover { background:#45e0be; }
+  .info { color:#a8b2d1; font-size:13px; margin-top:12px; text-align:center; }
+  .info span { color:#64ffda; }
+  .mode-tabs { display:flex; gap:8px; margin-bottom:12px; justify-content:center; }
+  .mode-tab { padding:6px 16px; border-radius:20px; background:#1a1a40; color:#a8b2d1; cursor:pointer; font-size:13px; border:1px solid transparent; }
+  .mode-tab.active { background:#64ffda20; border-color:#64ffda; color:#64ffda; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:12px; font-size:11px; margin-left:6px; }
+  .badge-green { background:#00c85333; color:#00c853; }
+  .badge-red { background:#ff174433; color:#ff1744; }
+  .badge-yellow { background:#ffd60033; color:#ffd600; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="mode-tabs">
+    <div class="mode-tab active" data-mode="fk" onclick="setMode('fk')">FK 模式</div>
+    <div class="mode-tab" data-mode="ik" onclick="setMode('ik')">IK 模式（双解）</div>
+    <div class="mode-tab" data-mode="animate" onclick="setMode('animate')">动画演示</div>
+  </div>
+  <canvas id="canvas" width="600" height="600"></canvas>
+  <div class="controls" id="fkControls">
+    <div class="ctrl-group">
+      <label>θ₁ (肩关节)</label>
+      <input type="range" id="t1" min="-180" max="180" value="45" oninput="updateFK()">
+      <span class="value" id="t1v">45°</span>
+    </div>
+    <div class="ctrl-group">
+      <label>θ₂ (肘关节)</label>
+      <input type="range" id="t2" min="-180" max="180" value="-30" oninput="updateFK()">
+      <span class="value" id="t2v">-30°</span>
+    </div>
+  </div>
+  <div class="controls" id="ikControls" style="display:none;">
+    <div class="ctrl-group">
+      <label>目标 X</label>
+      <input type="range" id="ikX" min="-180" max="180" value="80" oninput="updateIK()">
+      <span class="value" id="ikXv">0.80</span>
+    </div>
+    <div class="ctrl-group">
+      <label>目标 Y</label>
+      <input type="range" id="ikY" min="-180" max="180" value="100" oninput="updateIK()">
+      <span class="value" id="ikYv">1.00</span>
+    </div>
+  </div>
+  <div class="info" id="statusBar">
+    <span>FK</span> 模式 — 拖动滑块观察关节角→末端位置的关系
+  </div>
+</div>
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const W = canvas.width, H = canvas.height;
+const CX = W/2, CY = H/2;
+const SCALE = 160; // pixels per meter
+const L1 = 1.0, L2 = 0.8;
+
+let mode = 'fk';
+let target = {x: 0.8, y: 1.0};
+let dragging = false;
+
+// FK: joint angles in degrees
+let theta1 = 45, theta2 = -30;
+// IK solutions
+let ikUp = null, ikDown = null;
+let reachable = true;
+
+// Animation
+let animId = null, animAngle = 0;
+
+function toRad(d) { return d * Math.PI / 180; }
+function toDeg(r) { return r * 180 / Math.PI; }
+
+function fk(t1deg, t2deg) {
+  const t1 = toRad(t1deg), t2 = toRad(t2deg);
+  const jx = L1 * Math.cos(t1);
+  const jy = L1 * Math.sin(t1);
+  const ex = jx + L2 * Math.cos(t1 + t2);
+  const ey = jy + L2 * Math.sin(t1 + t2);
+  return {jx, jy, ex, ey};
+}
+
+function ikSolve(tx, ty) {
+  const d2 = tx*tx + ty*ty;
+  const maxR = L1 + L2;
+  const minR = Math.abs(L1 - L2);
+  if (d2 > maxR*maxR + 0.01 || d2 < minR*minR - 0.01) return null;
+  const cosT2 = (d2 - L1*L1 - L2*L2) / (2*L1*L2);
+  const cT2 = Math.max(-1, Math.min(1, cosT2));
+  const t2_up = Math.acos(cT2);
+  const t2_down = -t2_up;
+  const k1 = L1 + L2*Math.cos(t2_up);
+  const k2 = L2*Math.sin(t2_up);
+  const t1_up = Math.atan2(ty, tx) - Math.atan2(k2, k1);
+  const k1d = L1 + L2*Math.cos(t2_down);
+  const k2d = L2*Math.sin(t2_down);
+  const t1_down = Math.atan2(ty, tx) - Math.atan2(k2d, k1d);
+  return {
+    up: {t1: toDeg(t1_up), t2: toDeg(t2_up)},
+    down: {t1: toDeg(t1_down), t2: toDeg(t2_down)}
+  };
+}
+
+function drawArm(jx, jy, ex, ey, color, dash) {
+  ctx.save();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = dash ? 5 : 7;
+  if (dash) ctx.setLineDash([6, 4]);
+  ctx.lineCap = 'round';
+  // shoulder to elbow
+  ctx.beginPath();
+  ctx.moveTo(CX, CY);
+  ctx.lineTo(CX + jx*SCALE, CY - jy*SCALE);
+  ctx.stroke();
+  // elbow to end
+  ctx.beginPath();
+  ctx.moveTo(CX + jx*SCALE, CY - jy*SCALE);
+  ctx.lineTo(CX + ex*SCALE, CY - ey*SCALE);
+  ctx.stroke();
+  // joints
+  [ [0,0,'#fff'], [jx,jy,'#fff'], [ex,ey,'#64ffda'] ].forEach(([px, py, clr]) => {
+    ctx.beginPath();
+    ctx.arc(CX + px*SCALE, CY - py*SCALE, 6, 0, 2*Math.PI);
+    ctx.fillStyle = clr;
+    ctx.fill();
+    ctx.strokeStyle = '#1a1a2e';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  });
+  ctx.restore();
+}
+
+function drawTarget(tx, ty) {
+  ctx.save();
+  // cross
+  ctx.strokeStyle = reachable ? '#ff6b6b' : '#ff1744';
+  ctx.lineWidth = 3;
+  const s = 10;
+  ctx.beginPath();
+  ctx.moveTo(CX + tx*SCALE - s, CY - ty*SCALE - s);
+  ctx.lineTo(CX + tx*SCALE + s, CY - ty*SCALE + s);
+  ctx.moveTo(CX + tx*SCALE + s, CY - ty*SCALE - s);
+  ctx.lineTo(CX + tx*SCALE - s, CY - ty*SCALE + s);
+  ctx.stroke();
+  // circle
+  ctx.beginPath();
+  ctx.arc(CX + tx*SCALE, CY - ty*SCALE, 14, 0, 2*Math.PI);
+  ctx.strokeStyle = reachable ? '#ff6b6b66' : '#ff174466';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawWorkspace() {
+  ctx.save();
+  // reachable area (light fill)
+  ctx.beginPath();
+  ctx.arc(CX, CY, (L1+L2)*SCALE, 0, 2*Math.PI);
+  ctx.fillStyle = '#64ffda08';
+  ctx.fill();
+  ctx.strokeStyle = '#64ffda33';
+  ctx.lineWidth = 1;
+  ctx.setLineDash([4, 4]);
+  ctx.stroke();
+  // inner boundary
+  const minR = Math.abs(L1 - L2);
+  if (minR > 0.05) {
+    ctx.beginPath();
+    ctx.arc(CX, CY, minR*SCALE, 0, 2*Math.PI);
+    ctx.strokeStyle = '#ff6b6b33';
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function drawInfo(text, color) {
+  ctx.save();
+  ctx.fillStyle = color || '#a8b2d1';
+  ctx.font = '14px "Segoe UI", sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(text, W/2, 25);
+  ctx.restore();
+}
+
+function render() {
+  ctx.clearRect(0, 0, W, H);
+  drawWorkspace();
+
+  if (mode === 'fk') {
+    const fkData = fk(theta1, theta2);
+    drawArm(fkData.jx, fkData.jy, fkData.ex, fkData.ey, '#64ffda', false);
+    drawInfo(`FK模式 | 末端: (${fkData.ex.toFixed(3)}, ${fkData.ey.toFixed(3)})`, '#64ffda');
+  } else if (mode === 'ik') {
+    reachable = ikSolve(target.x, target.y) !== null;
+    drawTarget(target.x, target.y);
+    const sol = ikSolve(target.x, target.y);
+    if (sol) {
+      // Elbow up (blue)
+      const upFk = fk(sol.up.t1, sol.up.t2);
+      drawArm(upFk.jx, upFk.jy, upFk.ex, upFk.ey, '#4fc3f7', false);
+      // Elbow down (green, dashed)
+      const downFk = fk(sol.down.t1, sol.down.t2);
+      drawArm(downFk.jx, downFk.jy, downFk.ex, downFk.ey, '#81c784', true);
+      drawInfo(
+        `IK双解 | 肘朝上 θ₁=${sol.up.t1.toFixed(1)}° θ₂=${sol.up.t2.toFixed(1)}° | 肘朝下 θ₁=${sol.down.t1.toFixed(1)}°`,
+        '#4fc3f7'
+      );
+    } else {
+      drawInfo('❌ 不可达！目标超出工作空间', '#ff1744');
+    }
+  } else if (mode === 'animate') {
+    const tx = 1.2 * Math.cos(animAngle);
+    const ty = 1.2 * Math.sin(animAngle) + 0.3;
+    drawTarget(tx, ty);
+    const sol = ikSolve(tx, ty);
+    if (sol) {
+      const upFk = fk(sol.up.t1, sol.up.t2);
+      drawArm(upFk.jx, upFk.jy, upFk.ex, upFk.ey, '#4fc3f7', false);
+      const downFk = fk(sol.down.t1, sol.down.t2);
+      drawArm(downFk.jx, downFk.jy, downFk.ex, downFk.ey, '#81c784', true);
+    }
+    drawInfo('动画 | 目标沿圆运动 · 蓝色=肘朝上 绿色=肘朝下 (虚线)', '#64ffda');
+  }
+}
+
+function updateFK() {
+  theta1 = parseFloat(document.getElementById('t1').value);
+  theta2 = parseFloat(document.getElementById('t2').value);
+  document.getElementById('t1v').textContent = theta1 + '°';
+  document.getElementById('t2v').textContent = theta2 + '°';
+  render();
+}
+
+function updateIK() {
+  target.x = parseFloat(document.getElementById('ikX').value) / 100;
+  target.y = parseFloat(document.getElementById('ikY').value) / 100;
+  document.getElementById('ikXv').textContent = target.x.toFixed(2);
+  document.getElementById('ikYv').textContent = target.y.toFixed(2);
+  render();
+}
+
+function setMode(m) {
+  mode = m;
+  document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`[data-mode="${m}"]`).classList.add('active');
+  document.getElementById('fkControls').style.display = m === 'fk' ? 'flex' : 'none';
+  document.getElementById('ikControls').style.display = m === 'ik' ? 'flex' : 'none';
+  document.getElementById('statusBar').innerHTML = {
+    fk: '<span>FK</span> 模式 — 拖动滑块观察关节角→末端位置的关系',
+    ik: '<span>IK</span> 模式 — 拖动目标点，观察"肘朝上/朝下"双解',
+    animate: '<span>动画</span> — 目标沿圆运动，实时 IK 双解更新'
+  }[m];
+  if (m === 'animate') {
+    if (animId) cancelAnimationFrame(animId);
+    function animLoop() {
+      animAngle += 0.015;
+      render();
+      animId = requestAnimationFrame(animLoop);
+    }
+    animLoop();
+  } else {
+    if (animId) { cancelAnimationFrame(animId); animId = null; }
+    render();
+  }
+}
+
+// Canvas mouse interaction for IK mode
+canvas.addEventListener('mousedown', (e) => {
+  if (mode !== 'ik') return;
+  dragging = true;
+  updateTargetFromMouse(e);
+});
+canvas.addEventListener('mousemove', (e) => {
+  if (!dragging || mode !== 'ik') return;
+  updateTargetFromMouse(e);
+});
+window.addEventListener('mouseup', () => { dragging = false; });
+
+function updateTargetFromMouse(e) {
+  const rect = canvas.getBoundingClientRect();
+  const mx = e.clientX - rect.left;
+  const my = e.clientY - rect.top;
+  target.x = (mx - CX) / SCALE;
+  target.y = (CY - my) / SCALE;
+  target.x = Math.max(-1.8, Math.min(1.8, target.x));
+  target.y = Math.max(-1.8, Math.min(1.8, target.y));
+  document.getElementById('ikX').value = Math.round(target.x * 100);
+  document.getElementById('ikY').value = Math.round(target.y * 100);
+  document.getElementById('ikXv').textContent = target.x.toFixed(2);
+  document.getElementById('ikYv').textContent = target.y.toFixed(2);
+  render();
+}
+
+// Init
+setMode('fk');
+</script>
+</body>
+</html>
