@@ -27,7 +27,6 @@ class PandaMover(Node):
     def move_joint(self):
         """关节空间运动：直接指定 7 个关节弧度"""
         self.get_logger().info('=== Test 1: Joint-space ===')
-        # 7 个关节依次: [j1, j2, j3, j4, j5, j6, j7]
         joint_angles = [0.0, -0.785, 0.0, -2.0, 0.0, 1.5, 0.0]
         self.moveit2.move_to_configuration(joint_angles)
         self.moveit2.wait_until_executed()
@@ -38,7 +37,7 @@ class PandaMover(Node):
         self.get_logger().info('=== Test 2: Cartesian-space ===')
         self.moveit2.move_to_pose(
             position=[0.35, 0.20, 0.50],
-            quat_xyzw=[0.0, 0.0, 0.0, 1.0],  # 无旋转
+            quat_xyzw=[0.0, 0.0, 0.0, 1.0],
             frame_id='panda_link0',
         )
         self.moveit2.wait_until_executed()

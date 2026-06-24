@@ -1,260 +1,207 @@
-# 🗺️ 具身智能实战路线图 · 完整版
+# 🗺️ 具身智能实战路线图
 
-> 最后更新: 2026-06-22 | 硬件: GTX 1060 6GB | 目标: 智元方案岗
-
----
-
-## 📍 你当前的位置
-
-```
-           你现在在这里
-               │
-               ▼
-   Week 1           Week 2            Week 3-8
-  ROS2+Panda       VLA技术栈          方案输出+面试
-  ✅ 已完成        🟡 调研中          ⬜
-```
-
-### 已具备的能力
-
-| 能力 | 证据 | 面试价值 |
-|:---|:---|:---:|
-| 工业产线经验 3 年 | 歌尔 | ⭐⭐⭐⭐⭐ |
-| 工业视觉（YOLO / SuperPoints） | 歌尔落地 | ⭐⭐⭐⭐⭐ |
-| ROS2 + Topic 通信 | `agibot_demo.py` 跑通 | ⭐⭐⭐⭐ |
-| Panda + MoveIt2 控制 | `panda_move.py` 跑通 | ⭐⭐⭐⭐ |
-| VLA 概念（大小脑 / Action CoT） | 已学 | ⭐⭐⭐⭐ |
-| 四级兜底设计 | 方案已写 | ⭐⭐⭐⭐⭐ |
-| Agent 产品 0→1 | 工作流兜底 | ⭐⭐⭐⭐ |
-| PMP | 已考 | ⭐⭐⭐ |
-| **上下料方案框架** | `solution_loading_unloading.md` | ⭐⭐⭐⭐⭐ |
+> 最后更新: 2026-06-24 | 目标: **智元方案岗**
+> 硬件: GTX 1060 6GB | WSL2+ROS2: ✅ 就绪 | 公司有智元真机
 
 ---
 
-## 🧠 2026年最新 VLA 模型全景（可直接用的）
+## 📍 当前位置
 
-以下 4 个方案，从最容易到最难，你可选一个执行：
+```
+08周总目标: 一套方案(PDF) + 一套话术(脱稿) + 简历投出去
 
-### 方案 A：GR00T N1.7（NVIDIA · 2026年4月发布⭐⭐⭐）
-
-| 项目 | 内容 |
-|:---|:---|
-| **链接** | [github.com/NVIDIA/Isaac-GR00T](https://github.com/NVIDIA/Isaac-GR00T) |
-| **许可** | Apache 2.0（商用友好） |
-| **参数** | 3B（轻量） |
-| **硬件** | 推理 16GB+ VRAM / 微调 40GB+ |
-| **特点** | ✅ 开源 ✅ 跨 32 种机器人 ✅ 有人类视频预训练 |
-| **你的方案岗价值** | ⭐⭐⭐⭐⭐ 面试直接提「我看过 GR00T N1.7 源码」 |
-| **能跑吗？** | ❌ GTX 1060 不行 → 需租 AutoDL RTX 4090 |
-
-**快速体验（不需要 GPU）：**
-```bash
-# 在你的 WSL Ubuntu 里就能跑 open-loop 推理
-# 不需要 GPU！只是拿 demo 数据跑一遍，看 GR00T 的输入输出格式
-git clone --recurse-submodules https://github.com/NVIDIA/Isaac-GR00T.git
-cd Isaac-GR00T
-uv sync --python 3.10
-# 运行 open-loop 推理（CPU only，看结果）
-uv run python scripts/deployment/standalone_inference_script.py \
-  --model-path nvidia/GR00T-N1.7-3B \
-  --dataset-path demo_data/droid_sample \
-  --embodiment-tag OXE_DROID_RELATIVE_EEF_RELATIVE_JOINT \
-  --traj-ids 1 2 \
-  --inference-mode pytorch \
-  --action-horizon 8
+06.17             07.01           07.08           07.22           08.05
+ │                 │               │               │               │
+ Wk1-2            Wk3              Wk4-5           Wk6-7           Wk8
+理论打底         翻车+实操        方案输出        打磨+面试       投递
+──────▶
+✅ 95%完成        ⬜               ⬜              ⬜              ⬜
 ```
 
-### 方案 B：Pi0.5（Physical Intelligence · 2025年9月）
+### 你与 985 应届生的核心差异
 
-| 项目 | 内容 |
-|:---|:---|
-| **链接** | [github.com/Physical-Intelligence/openpi](https://github.com/Physical-Intelligence/openpi) |
-| **许可** | Apache 2.0 |
-| **硬件** | 推理 8GB+ VRAM / 微调 22.5GB+ |
-| **特点** | ✅ 开源 ✅ Knowledge Insulation ✅ SOTA |
-| **你的方案岗价值** | ⭐⭐⭐⭐⭐ Genie Sim 3.0 的 benchmark 对比就是基于 Pi0.5 |
-| **能跑吗？** | ❌ GTX 1060 6GB 差一点 → AutoDL 最低 ¥2/h |
-
-**快速体验（不需要 GPU）：**
-```bash
-git clone --recurse-submodules https://github.com/Physical-Intelligence/openpi.git
-cd openpi
-GIT_LFS_SKIP_SMUDGE=1 uv sync
-# 看代码结构、看它怎么定义输入输出
-less src/openpi/policies/libero_policy.py
 ```
+你有但对方没有:                         对方有你没有:
+✅ 歌尔 3 年产线经验 (懂客户要什么)         ❌ 985 学历
+✅ 工业视觉落地 (YOLO/SuperPoints)         ❌ 论文发表
+✅ Agent 产品 0→1 (兜底架构思想相同)        ❌ 能调模型
+✅ PMP + 跨国交付
+✅ 公司有智元真机
 
-### 方案 C：ACoT-VLA（智元 · CVPR 2026 ⭐⭐⭐）
-
-| 项目 | 内容 |
-|:---|:---|
-| **链接** | [github.com/AgibotTech/ACoT-VLA](https://github.com/AgibotTech/ACoT-VLA) |
-| **论文** | [arxiv.org/abs/2601.11404](https://arxiv.org/abs/2601.11404) |
-| **特点** | ✅ **智元自己出的模型** ✅ CVPR 2026 ✅ Action CoT |
-| **你的方案岗价值** | ⭐⭐⭐⭐⭐ **面试必提！「我看过智元 ACoT-VLA 的论文和代码」** |
-| **能跑吗？** | ❌ 同 Pi0.5 需要 GPU |
-
-### 方案 D：Genie Sim 3.1（智元 · 2026年4月）
-
-| 项目 | 内容 |
-|:---|:---|
-| **链接** | [github.com/AgibotTech/genie_sim](https://github.com/AgibotTech/genie_sim) |
-| **硬件** | 最低 RTX 4080 / 32GB RAM |
-| **版本** | v3.1（支持 Genie Sim World、RLinF、G2 机器人全身控制） |
-| **你的方案岗价值** | ⭐⭐⭐⭐⭐ **必须了解，可以看文档不看代码** |
-
-**你能做的（不需要 GPU）：**
-```bash
-# 1. 看你已下载的 Genie Sim User Guide.html
-# 2. 看 GitHub README，了解它能干什么
-# 3. 了解 benchmark leaderboard 上的数据
+→ 方案岗看的是「能否解决产线问题」，不是学校。
+  你的经验优势足够弥补学历差距。重点是把经验用「具身智能术语」翻译一遍。
 ```
 
 ---
 
-## 🎯 核心实操清单（按优先级排序）
+## 📅 8 周计划
 
-### 🔴 P0：必须做（2-3 天）
+| 阶段 | 时间 | 核心目标 | 状态 |
+|:---:|:---:|:---|:---:|
+| **① 理论打底** | 06.17-06.30 | 12核心概念掌握 + Day14考核 | 🟡 95%完成，话术待练 |
+| **② 翻车+实操** | 07.01-07.07 | VLA翻车模式 + 3个实操跑通 | ⬜ |
+| **③ 方案输出** | 07.08-07.21 | 三场景方案 + PPT | ⬜ |
+| **④ 打磨+面试** | 07.22-08.04 | 话术脱稿 + 简历重构 + 模拟面试 | ⬜ |
+| **⑤ 投递** | 08.05-08.11 | 投智元 + Figure + 星动纪元 | ⬜ |
 
-| # | 实操 | 做什么 | 面试价值 |
-|:---:|:---|:---|:---:|
-| 1 | **看 GR00T N1.7 源码结构** | clone repo，理解它的输入输出格式、embodiment tag 概念 | 证明你懂 VLA 的工程实现 |
-| 2 | **看 Genie Sim 3.1 文档** | 看你已下载的 HTML，了解场景生成、benchmark、leaderboard | 证明你了解智元平台 |
-| 3 | **完善方案 PPT** | 把 `solution_loading_unloading.md` 转成 PPT | **敲门砖** |
+### Week 1-2 (已完成) ✅ 产出清单
 
-### 🟡 P1：建议做（1-2 天）
+| 分类 | 具体内容 |
+|:---|:---|
+| 🧠 理论 (12概念95%) | 机器人分类、四层架构、ROS3通信+AimRT、FK/IK、VLA大小脑、三大模型对比、仿真栈、RLvsIL、Sim2Real、冷启动三阶段、兜底金字塔、范式四阶段演进 |
+| 💻 代码 | `agibot_demo.py` `panda_move.py` `fk_ik_simulator.py` `simulate_vla.py` `panda_executor.py` `vla_cloud_bridge.py` `era3_vla_demo.py` |
+| 📦 资产 | 源码克隆 (gr00t/openpi/acot_vla/genie_sim)、方案框架、云端桥接、代码分析 |
+| 🔧 环境 | WSL + ROS2 Humble + MoveIt2 + Gazebo 已就绪 |
 
-| # | 实操 | 做什么 | 方法 |
-|:---:|:---|:---|:---|
-| 4 | **AutoDL 租 GPU 跑推理** | 最低 ¥2/h 租 RTX 3090 | 部署 Pi0.5 或 GR00T 推理 |
-| 5 | **云端→本地桥接** | 用我写的 `vla_cloud_bridge.py` | 云端推 → WSL Panda 执行 |
-| 6 | **本地模拟 VLA Demo** | 用 `simulate_vla.py` + `panda_executor.py` | 不需要 GPU，跑通整个链路 |
+### Week 3 (07.01-07.07) 🔜 翻车+实操冲刺
 
-### 🟢 P2：有时间做
-
-| # | 实操 | 做什么 | 时间 |
-|:---:|:---|:---|:---|
-| 7 | Generator Sim 云端体验 | 注册 Genie Sim 云端 | 1h |
-| 8 | 6D 位姿 + 手眼标定 | 搜 PnP 和标定流程 | 1h |
-| 9 | 力控概念 | 搜阻抗/导纳控制 | 1h |
-
----
-
-## 📅 7 天冲刺计划
-
-| 天 | 做什么 | 产出 |
+**理论学习：**
+| 天 | 主题 | 场景关联 |
 |:---:|:---|:---|
-| **今天** | ① 读完这个路线图 ② clone GR00T + OpenPI 源码 ③ 开始看 Genie Sim 文档 | 理解 VLA 模型的全貌 |
-| **Day 2** | ① 完善方案 PPT ② 在 WSL 跑通 `simulate_vla.py` + `panda_executor.py` Demo | **可展示的 Demo** |
-| **Day 3** | ① 注册 AutoDL ② 部署 GR00T N1.7 或 Pi0.5 推理 ③ 跑通云端→本地桥接 | **端到端链路** |
-| **Day 4** | ① 看 ACoT-VLA 论文 + 源码 ② 补 6D 位姿/手眼标定 | 知识补齐 |
-| **Day 5** | ① 完善方案 PPT v2 ② 加入 Genie Sim 和 GR00T 的调研结论 | 方案加深 |
-| **Day 6** | ① 准备面试 12 题话术 ② 练习 3 分钟方案讲解 | 面试准备 |
-| **Day 7** | ① 简历用具身语言重构 ② 附方案作品集 ③ **投递** | **敲门砖** |
+| 15 | VLA 翻车模式清单 (5大类) | A新物体/B高精度/C光照 |
+| 16 | VLA vs 确定性选择标准 | 三场景决策树 |
+| 17 | 根因分析框架 | 三场景排查路径不同 |
+| 18 | 🔧 去公司看智元机器人 | 现场笔记 |
+| 19 | 竞品深度对比 | Amazon/Figure/Lely |
+| 20 | 300字缝合话术 | 三版本 |
+| 21 | 每周复盘 | |
+
+**3 个实操任务（本周核心）：**
+| # | 实操 | 说明 |
+|:---:|:---|:---|
+| 1 | **Era 2 视觉抓取流水线** | Windows图→YOLO→ROS2→WSL→MoveIt2 |
+| 2 | **Era 3 模拟VLA推理** | simulate_vla + panda_executor 跑通 |
+| 3 | **四级兜底Demo** | VLA失败→视觉重试→力控→报警 |
+
+### Week 4-5 (07.08-07.21) 📄 方案输出
+
+| 周 | 任务 | 产出 |
+|:---:|:---|:---|
+| 4 | 三大场景深度方案 (仓储/制造/农业) | 三份产品简报 |
+| 5 | PPT制作 (10页主方案+3页附录) | 模块化PPT |
+
+### Week 6-7 (07.22-08.04) 🗣️ 打磨+面试
+
+| 周 | 任务 |
+|:---:|:---|
+| 6 | 方案自检 + 打磨 + 终版PPT + 路演录音 |
+| 7 | 简历重构 + 3个缝合故事 + 12题话术 + 模拟面试 |
+
+### Week 8 (08.05-08.11) 🚀 投递
+
+| 任务 |
+|:---|
+| 投智元 + Figure + 星动纪元 + 备选方案 (宇树/银河通用) |
 
 ---
 
-## 🔧 实操详细步骤
+## 🤔 你的 WSL2 能做什么？
 
-### Step 1：克隆最新 VLA 源码（今天就能做）
-
-```bash
-# 在你的 WSL Ubuntu 里（不需要 GPU）
-
-# 1. GR00T N1.7（NVIDIA 最新）
-git clone --recurse-submodules https://github.com/NVIDIA/Isaac-GR00T.git
-
-# 2. OpenPI（Pi0/Pi0.5 官方）
-git clone --recurse-submodules https://github.com/Physical-Intelligence/openpi.git
-
-# 3. ACoT-VLA（智元，CVPR 2026）
-git clone --recurse-submodules https://github.com/AgibotTech/ACoT-VLA.git
-
-# 4. Genie Sim（智元仿真平台）
-git clone https://github.com/AgibotTech/genie_sim.git
-```
-
-然后花 30 分钟看每个 repo 的结构，理解：
-- 输入是什么格式（图像 + 指令 + 状态）
-- 输出是什么格式（action chunk）
-- 怎么定义 embodiment（机器人配置）
-- 怎么启动推理服务
-
-### Step 2：在 WSL 跑通本地 Demo
-
-```bash
-# 已经有 Panda 仿真环境的情况下
-# 参考 cloud_vla_bridge/ 下的文件
-
-# 终端 1: Panda 仿真
-ros2 launch panda_moveit_config panda_gazebo.launch.py
-
-# 终端 2: VLA 模拟器（不需要 GPU）
-python3 cloud_vla_bridge/simulate_vla.py
-
-# 终端 3: 执行器
-python3 cloud_vla_bridge/panda_executor.py
-
-# 终端 4: 触发来料
-ros2 topic pub /parts_detected std_msgs/msg/String "data: '1|CPU芯片|0.02|-0.01'"
-```
-
-### Step 3：租 AutoDL 跑真实 VLA 推理
-
-```
-1. 打开 autodl.com 注册
-2. 选择 GPU: RTX 4090 (~¥4/h) 或 RTX 3090 (~¥2/h)
-3. 选择镜像: PyTorch 2.x + CUDA 12.x
-4. 开机后 SSH 连接
-5. 克隆 GR00T 或 OpenPI
-6. 运行推理
-7. 用 vla_cloud_bridge.py 连接云端→本地
-```
-
-### Step 4：看 Genie Sim 文档（已下载）
-
-你已经有 `Genie Sim User Guide.html`，重点看：
-- 3.1 Benchmark Evaluation（了解 benchmark 怎么跑）
-- 3.2 Scene Generator（LLM 驱动场景生成）
-- Leaderboard 数据（Pi0.5 vs GR00T vs ACoT 的对比）
+| 想做的事 | 可能 | 做法 |
+|:---|:---:|:---|
+| Era 2: Panda 抓取 | ✅ 已能做 | `panda_move.py` |
+| Era 2: + 模拟相机 | 🟡 卡但能用 | Gazebo 相机插件 (WSL2无GPU加速) |
+| Era 2: + YOLO 检测 | ✅ 能做 | Windows图片→Topic→WSL |
+| Era 2: 完整流水线 | ✅ 能做 | 图片→YOLO→位姿→IK→MoveIt2 |
+| Era 3: 模拟VLA | ✅ 已写好 | `simulate_vla.py` + `panda_executor.py` |
+| Era 3: 真实VLA | ❌ 需AutoDL | ¥2-4/h租RTX 3090/4090 |
+| Genie Sim | ❌ 需RTX 4080+ | 硬件不够 |
 
 ---
 
-## 💡 面试必杀技：你比其他人强在哪
+## 🎯 三大杀手级场景（面试核心武器）
 
-### 你的 3 个缝合故事
+> 面试官问场景题时，用这三套框架回答。
 
-```
-缝合 1: "我做 Agent 产品时 LLM + 工作流兜底
-         → 跟 VLA + 四级兜底是同一个架构逻辑"
-         （证明你的 Agent 经验可迁移）
+| 场景 | 对标企业 | 核心逻辑 | 你的经验缝合 |
+|:---|:---|:---|:---|
+| **A 仓储物流** 🏭 | Amazon Vulcan, Agility Digit | SKU多精度低→VLA天然优势 | AGV仓储盘点项目 |
+| **B 制造业** 🔧 | Figure×BMW, Hyundai | 精度高节拍快→兜底设计关键 | 歌尔3C产线经验 |
+| **C 农业/特殊** 🌾 | Lely 奶牛场机器人 | 环境恶劣ROI高→RaaS模式 | 越南交付的破局思维 |
 
-缝合 2: "我在歌尔做工业视觉 3 年
-         → VLA 失败后的第二层兜底就是我的老本行"
-         （证明你有别人没有的工业经验）
+### 场景 → 技能优先级
 
-缝合 3: "我做过越南跨国交付
-         → 产线方案落地不只是技术问题，是项目管理问题"
-         （证明你有全局视野）
-```
-
-### 面试 30 秒自我介绍
-
-> "我有 3 年工业产线经验，做过工业视觉落地和 Agent 产品 0 到 1。我的核心能力是**把 VLA 的泛化能力和工业级的可靠性结合起来**——VLA 做主力泛化抓取，传统视觉做精确纠偏，力控做物理兜底。我看过 GR00T N1.7 的源码和 Genie Sim 3.1 的文档，也跑通了云端推理到本地执行的端到端 Demo。"
+| 技能 | 场景A | 场景B | 场景C |
+|:---|:---:|:---:|:---:|
+| VLA大小脑 | ★★★★★ | ★★★★ | ★★★ |
+| 兜底设计 | ★★★★★ | ★★★★★ | ★★★★ |
+| 冷启动 | ★★★★★ | ★★★★ | ★★ |
+| 翻车诊断 | ★★★★★ | ★★★★★ | ★★★ |
+| 安全标准 | ★★★ | ★★★★★ | ★★★ |
+| 手眼标定 | ★★★★ | ★★★★★ | ★★★ |
+| RaaS商业 | ★★★★ | ★★★ | ★★★★★ |
 
 ---
 
-## 📚 资料索引（一键直达）
+## 🏆 面试 12 题自检
 
-| 资料 | 链接 | 优先级 |
-|:---|:---|:---:|
-| GR00T N1.7 源码 | [GitHub](https://github.com/NVIDIA/Isaac-GR00T) | 🔴 |
-| GR00T N1.7 论文 | [arXiv](https://arxiv.org/abs/2503.14734) | 🔴 |
-| Pi0.5 源码 | [GitHub](https://github.com/Physical-Intelligence/openpi) | 🔴 |
-| ACoT-VLA 智元模型 | [GitHub](https://github.com/AgibotTech/ACoT-VLA) | 🔴 |
-| ACoT-VLA 论文 | [arXiv](https://arxiv.org/abs/2601.11404) | 🔴 |
-| Genie Sim 3.1 | [GitHub](https://github.com/AgibotTech/genie_sim) | 🔴 |
-| Genie Sim 文档 | 已下载的 HTML | 🔴 |
-| OpenVLA | [GitHub](https://github.com/openvla/openvla) | 🟡 |
-| 智元 AIMA 平台 | Genie Sim 文档 | 🟡 |
-| AutoDL 云 GPU | [autodl.com](https://www.autodl.com) | 🟡 |
+| # | 问题 | 你的锚点 | 场景 |
+|:---:|:---|:---|:---:|
+| 1 | 「做过机械臂吗？」 | MoveIt2 + Python，知VLA边界 | A/B |
+| 2 | 「机器人控制是什么？」 | 四代演进：示教器→ROS→VLA→世界模型 | A/B/C |
+| 3 | **「仓储物流怎么看？」** | Amazon对标，标准品建基线→非标打溢价 | **A** |
+| 4 | **「制造业怎么落地？」** | ISO 10218 + 99.99% + 四级兜底 | **B** |
+| 5 | **「农业机会？」** | Lely启示：形态决定功能，RaaS降门槛 | **C** |
+| 6 | 「VLA vs 传统怎么选？」 | 泛化vs可靠性trade-off→场景决策树 | A/B |
+| 7 | 「冷启动怎么办？」 | 规则→遥操作→飞轮，三场景策略不同 | A |
+| 8 | 「人形机器人趋势？」 | 范式演进视角+三场景最适合形态 | A/B/C |
+| 9 | 「智元 vs 宇树？」 | 产品+生态差异，智元场景B有优势 | B |
+| 10 | 「了解智元吗？」 | AIMA (灵渠/Genie Studio/Genie Sim/GO-2) | A/B |
+| 11 | 「经验能迁移吗？」 | 3个缝合故事各对应一个场景 | A/B/C |
+| 12 | 「凭什么胜任？」 | 懂工业落地+懂VLA边界+懂兜底+懂三场景 | A/B/C |
+
+---
+
+## 🔧 实操清单 (按优先级)
+
+| # | 实操 | 面试价值 | 状态 |
+|:---:|:---|:---:|:---:|
+| 1 | ROS2+Panda Python | ⭐⭐⭐⭐ | ✅ |
+| 2 | 产线Topic通信Demo | ⭐⭐⭐⭐ | ✅ |
+| 3 | Era 3 VLA端到端仿真 | ⭐⭐⭐⭐ | ✅ |
+| 4 | **Era 2 视觉抓取流水线** | ⭐⭐⭐⭐⭐ | ⬜ Week3 |
+| 5 | **Era 3 模拟VLA+Panda** | ⭐⭐⭐⭐⭐ | ⬜ Week3 |
+| 6 | **四级兜底Demo** | ⭐⭐⭐⭐⭐ | ⬜ Week3 |
+| 7 | Genie Sim文档调研 | ⭐⭐⭐ | 🟡 |
+| 8 | 去公司看智元机器人 | ⭐⭐⭐⭐⭐ | 🟡 |
+| 9 | 三场景方案简报 | ⭐⭐⭐⭐⭐ | ⬜ Week4 |
+| 10 | 模块化PPT | ⭐⭐⭐⭐⭐ | ⬜ Week5 |
+| 11 | 路演录音 | ⭐⭐⭐⭐⭐ | ⬜ Week6 |
+
+---
+
+## 📁 项目结构
+
+```
+AGIBOT/
+├── README.md                     # ← 你现在看的
+├── todo.md                       # 每日任务
+├── MASTER_ROADMAP.md             # ← 这个文件 (唯一路线图)
+│
+├── src/                          # 💻 自主代码
+│   ├── week_1/                   # ROS2 + Panda (agibot_demo, panda_move...)
+│   ├── week_2/                   # VLA仿真 (era3_vla_demo, vla_pipeline_sim...)
+│   ├── week_3~6/                 # 各周仿真脚本
+│   └── cloud_vla_bridge/         # 云端VLA桥接 (simulate_vla, panda_executor...)
+│
+├── docs/                         # 📚 文档
+│   ├── solutions/                # 敲门砖方案
+│   └── reference/                # 参考资料 + resume.md
+│
+├── third_party/                  # 📦 第三方源码 (gr00t/openpi/acot_vla/genie_sim)
+│
+└── journal/                      # 📝 个人日志 (已gitignore)
+```
+
+---
+
+## 📎 相关文档索引
+
+| 文档 | 路径 | 说明 |
+|:---|:---|:---|
+| 每日任务 | `todo.md` | ✅ 更新中 |
+| 简历 | `docs/reference/resume.md` | ✅ 已写好，Week7打磨 |
+| 敲门砖方案 | `docs/solutions/solution_loading_unloading.md` | ✅ |
+| 三大场景ROI分析 | `docs/reference/high_roi_embodied_ai_scenarios.md` | ✅ |
+| Genie Sim文档 | `docs/reference/Genie Sim User Guide.html` | 🟡 待读 |
+| 代码部署指南 | `src/cloud_vla_bridge/deploy_to_autodl.md` | ✅ |
