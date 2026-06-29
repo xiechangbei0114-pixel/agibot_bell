@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智元G2 × 龙旗科技 · 平板产线质检上下料解决方案</title>
+<style>
+  :root {
+    --primary: #1a56db;
+    --primary-light: #e8f0fe;
+    --secondary: #0d9488;
+    --accent: #f59e0b;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --success: #22c55e;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #1a56db 100%);
+    color: white;
+    padding: 60px 40px 50px;
+    text-align: center;
+  }
+  .header h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; letter-spacing: 1px; }
+  .header .subtitle { font-size: 18px; opacity: 0.85; margin-bottom: 20px; }
+  .header .meta {
+    display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;
+    font-size: 13px; opacity: 0.75;
+  }
+  .header .meta span::before { content: "●"; margin-right: 6px; }
+
+  /* Container */
+  .container { max-width: 1000px; margin: 0 auto; padding: 30px 20px 60px; }
+
+  /* Section */
+  .section {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 32px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+  }
+  .section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--primary);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section h2 .badge {
+    background: var(--primary);
+    color: white;
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0 10px;
+    color: var(--primary);
+  }
+  .section p { margin-bottom: 12px; color: var(--text); }
+  .section ul, .section ol { margin: 8px 0 16px 20px; }
+  .section li { margin-bottom: 6px; }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 30px; margin: 16px 0; }
+  .timeline::before {
+    content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  .timeline-item {
+    position: relative; margin-bottom: 20px; padding-left: 16px;
+  }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -26px; top: 6px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--primary); border: 2px solid white;
+  }
+  .timeline-item .tl-title { font-weight: 600; font-size: 14px; }
+  .timeline-item .tl-desc { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+  /* Cards grid */
+  .card-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px; margin: 16px 0;
+  }
+  .info-card {
+    background: var(--primary-light);
+    border-radius: 8px;
+    padding: 16px;
+    border-left: 3px solid var(--primary);
+  }
+  .info-card .card-title { font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+  .info-card .card-body { font-size: 13px; color: var(--text-muted); }
+
+  /* Workflow diagram */
+  .workflow {
+    display: flex; flex-direction: column; gap: 0;
+    margin: 20px 0;
+  }
+  .wf-step {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 14px 16px;
+    border-left: 3px solid var(--border);
+    position: relative;
+  }
+  .wf-step .step-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--primary); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; flex-shrink: 0;
+  }
+  .wf-step.done .step-num { background: var(--success); }
+  .wf-step .step-content { flex: 1; }
+  .wf-step .step-title { font-weight: 600; font-size: 14px; }
+  .wf-step .step-desc { font-size: 13px; color: var(--text-muted); }
+
+  /* Table */
+  table {
+    width: 100%; border-collapse: collapse; margin: 16px 0;
+    font-size: 13px;
+  }
+  th {
+    background: var(--primary); color: white; padding: 10px 12px;
+    text-align: left; font-weight: 600;
+  }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  tr:hover td { background: #f1f5f9; }
+
+  /* Highlight */
+  .highlight { background: #fef9c3; padding: 0 4px; border-radius: 3px; }
+  .tag {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 11px; font-weight: 600; margin-right: 4px;
+  }
+  .tag-il { background: #dbeafe; color: #1d4ed8; }
+  .tag-rl { background: #fce7f3; color: #db2777; }
+  .tag-rule { background: #f3e8ff; color: #7c3aed; }
+
+  /* Footer */
+  .footer {
+    text-align: center; font-size: 12px; color: var(--text-muted);
+    padding: 30px; border-top: 1px solid var(--border);
+    margin-top: 20px;
+  }
+
+  @media (max-width: 640px) {
+    .header { padding: 30px 16px 24px; }
+    .header h1 { font-size: 22px; }
+    .section { padding: 20px 16px; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🤖 智元 G2 × 龙旗科技</h1>
+  <div class="subtitle">平板产线质检上下料 · 具身智能解决方案</div>
+  <div class="meta">
+    <span>文档版本: V2.0</span>
+    <span>日期: 2026-06-29</span>
+    <span>状态: 已并线运行中</span>
+    <span>机器人数量: 4台 G2</span>
+    <span>数据来源: 新华社直播访谈</span>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ============ 1. 项目背景 ============ -->
+<div class="section">
+  <h2>📋 1. 项目背景与需求分析</h2>
+
+  <h3>1.1 项目背景</h3>
+  <table style="margin-bottom:16px;">
+    <tr><th>项目</th><th>实际数据（来自直播访谈）</th></tr>
+    <tr><td>客户</td><td>龙旗科技（南昌工厂）— 年出货量数千万台的消费电子工厂</td></tr>
+    <tr><td>工位</td><td>平板电脑多媒体集成测试工站（下线前最后一道检测）</td></tr>
+    <tr><td>任务</td><td>上下料：从高速流水线取待测平板 → 放入测试治具 → 取出 → 按PASS/NG分拣</td></tr>
+    <tr><td>机器人</td><td>精灵 G2（轮式半人形），4台（直播出镜2台，另2台因保密未出镜）</td></tr>
+    <tr><td>并线时间</td><td><strong>2026年3月16日</strong>正式并线</td></tr>
+    <tr><td>项目启动</td><td><strong>2025年9月</strong>成立联合攻关小组</td></tr>
+    <tr><td>到厂时间</td><td>2025年12月下旬初样到厂</td></tr>
+    <tr><td>累计运行</td><td>144小时+（截至直播，持续积累中）</td></tr>
+    <tr><td>运行模式</td><td>24小时两班倒，连续作业</td></tr>
+  </table>
+
+  <h3>1.2 客户痛点</h3>
+  <ul>
+    <li><strong>多型号混产：</strong>3C产品迭代快，传统自动化治具换型周期长，产线柔性不足</li>
+    <li><strong>人工成本高：</strong>上下料工位劳动强度大（每天几万步、高频次转身），人员流动率高</li>
+    <li><strong>节拍压力：</strong>人工操作约十几秒，但人员稳定性差，情绪/疲劳影响良率波动</li>
+    <li><strong>不可控因素：</strong>"人是生产环节里最不可控的因素，人会出错"（张总原话）</li>
+  </ul>
+
+  <h3>1.3 方案思路</h3>
+  <p><strong>姚院（智元合伙人）</strong>在访谈中阐述了技术架构：</p>
+  <div style="background:#f0f4ff;border-left:4px solid var(--primary);padding:14px;border-radius:4px;margin:12px 0;font-size:14px;">
+    <p><strong>"机器人落地产线有好几层技术：</strong></p>
+    <p>① <strong>底层：稳定可靠的硬件本体</strong> — 灵活的全向底盘、26自由度、力矩传感器支持力控</p>
+    <p>② <strong>中层：算法</strong> — 具身大模型完成端到端原子动作 + 海量数据预训练 + 后训练 + 在线真机强化学习</p>
+    <p>③ <strong>上层：Agent系统（Genie Studio Agent）</strong> — 与流水线/设备通信、任务调度、异常恢复"</p>
+  </div>
+</div>
+
+<!-- ============ 2. 动作流程拆解 ============ -->
+<div class="section">
+  <h2>🔄 2. 作业流程与实战数据</h2>
+
+  <h3>2.1 工位描述</h3>
+  <p>平板电脑 <strong>多媒体集成测试工站</strong>（下线前最后一道检测）的上下料环节。</p>
+  <p>G2 与测试装备、传输轨道组成 <strong>最小作业单元</strong>，相互协作：</p>
+  <ul>
+    <li>上游：高速流水线源源不断送来待测平板</li>
+    <li>G2：从流水线抓取 → 放入测试治具 → 与测试装备实时通信 → 取出 → 按结果分拣</li>
+    <li>下游：良品流入下一工站，NG品放入小窗口由人工定时收集复判</li>
+  </ul>
+  <p><strong>关键难点（张总原话）：</strong>"硬控、臀部的协调作业、双臂协同、快速启动急速刹停的精准定位"</p>
+
+  <h3>2.2 实战性能数据</h3>
+  <div class="card-grid">
+    <div class="info-card">
+      <div class="card-title">📈 峰值 UPH</div>
+      <div class="card-body" style="font-size:24px;font-weight:700;color:var(--primary);">376</div>
+    </div>
+    <div class="info-card">
+      <div class="card-title">📊 均值 UPH</div>
+      <div class="card-body" style="font-size:24px;font-weight:700;color:var(--secondary);">~296</div>
+    </div>
+    <div class="info-card">
+      <div class="card-title">✅ 一次直通率</div>
+      <div class="card-body" style="font-size:24px;font-weight:700;color:var(--success);">99.91%</div>
+      <div style="font-size:12px;color:var(--text-muted);">取产品到放入机柜的动作</div>
+    </div>
+    <div class="info-card">
+      <div class="card-title">⏱ 节拍</div>
+      <div class="card-body" style="font-size:24px;font-weight:700;color:var(--accent);">十几秒</div>
+      <div style="font-size:12px;color:var(--text-muted);">已超越人类节拍</div>
+    </div>
+  </div>
+
+  <h3>2.3 节拍演进历史（姚院原话）</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="tl-title">2025.12 初样到厂</div>
+      <div class="tl-desc">完成一套动作周期需要 <strong>100多秒</strong></div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-title">2026.01 初</div>
+      <div class="tl-desc">优化至 <strong>20多秒</strong>（约1-2个月迭代）</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-title">2026.03 前</div>
+      <div class="tl-desc">突破至 <strong>十几秒</strong>，达到人类水平</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-title">2026.03.16</div>
+      <div class="tl-desc"><strong>正式并线</strong>，24小时连续作业</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-title">2026.06.29（直播日）</div>
+      <div class="tl-desc">累计运行144h+，峰值376 UPH，均值296 UPH</div>
+    </div>
+  </div>
+
+  <h3>2.4 节拍瓶颈分析</h3>
+  <p>张总指出目前接近20秒但还有差异，主要瓶颈在于：</p>
+  <ul>
+    <li><strong>系统间逻辑通讯</strong>：机器人跟测试装备做无线联通，现场干扰、信号丢包影响</li>
+    <li>"它的硬控、包括扭矩、快速底盘稳定性"对机器人提出更高要求</li>
+  </ul>
+  <p>但这些问题的解决方案已基本到位，后续通过OTA持续优化软件算法。</p>
+</div>
+
+<!-- ============ 3. 训练拆解 ============ -->
+<div class="section">
+  <h2>🧠 3. 技术栈与训练拆解</h2>
+
+  <h3>3.1 姚院披露的三层技术架构</h3>
+  <div style="background:#1e293b;color:#e2e8f0;padding:20px;border-radius:8px;font-size:13px;overflow-x:auto;line-height:1.6;margin:12px 0;">
+ ┌─────────────────────────────────────────────────────────────────────────┐
+ │ ③ Agent系统 (Genie Studio Agent)                                       │
+ │    与流水线通信 · 与测试装备信息交互 · 任务调度 · 异常恢复 · 错误处理    │
+ │    2026.06.28 发布 — "一站式作业流水线开发平台"                          │
+ ├─────────────────────────────────────────────────────────────────────────┤
+ │ ② 算法层                                                               │
+ │    ├── 具身大模型（GO-2）：端到端完成原子动作                             │
+ │    ├── 预训练：海量数据训练基础能力                                       │
+ │    ├── 后训练（微调）：产线特定场景适配                                   │
+ │    └── 在线真机强化学习：接近100%成功率 + 人级节拍                       │
+ ├─────────────────────────────────────────────────────────────────────────┤
+ │ ① 硬件本体（精灵G2）                                                    │
+ │    灵活全向底盘 · 26自由度 · 力矩传感器(力控) · 工业级可靠性             │
+ │    100%车规级 · IP42 · 24小时连续作业                                   │
+ └─────────────────────────────────────────────────────────────────────────┘</div>
+  <p style="font-size:13px;color:var(--text-muted);">来源：智元合伙人姚茂青在新华社直播访谈中的原话</p>
+
+  <h3>3.2 到底学什么？</h3>
+  <p>GO-2 模型学习从 <span class="highlight">(三路图像 + 26维关节状态 + 语言指令)</span> 到 <span class="highlight">(粗动作序列 + 精动作序列)</span> 的映射。</p>
+
+  <table>
+    <tr><th>输入</th><th>维度</th><th>说明</th></tr>
+    <tr><td>头部相机</td><td>224×224×3</td><td>全局视野</td></tr>
+    <tr><td>左手相机</td><td>224×224×3</td><td>精密对位用</td></tr>
+    <tr><td>右手相机</td><td>224×224×3</td><td>精密对位用</td></tr>
+    <tr><td>关节状态</td><td>26 维</td><td>当前 26 个关节的角度</td></tr>
+    <tr><td>语言指令</td><td>token 序列</td><td>如："grasp tablet from conveyor with right hand"</td></tr>
+    <tr><td style="font-weight:600;color:var(--primary);">↓ 模型推理 ↓</td><td colspan="2"></td></tr>
+    <tr><td>粗动作序列</td><td>50步 × 21维</td><td>慢系统：大致的动作轨迹</td></tr>
+    <tr><td>精动作序列</td><td>30步 × 21维</td><td>快系统：精细的关节角度</td></tr>
+  </table>
+
+  <h3>3.3 三步训练法 + 仿真验证</h3>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="tl-title">Step 1: 基座模型预训练 <span class="tag tag-il">模仿学习</span></div>
+      <div class="tl-desc">
+        从海量示教数据（AgiBot World 数据集 + LIBERO 等）训练 GO-2 基座模型。<br>
+        学通用的"视觉理解 + 动作生成"能力，不针对特定产线。<br>
+        姚院原话："像大模型一样，有预训练，也有后训练。"
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-title">Step 2: 仿真验证（数字孪生）<span class="tag tag-rule">仿真</span></div>
+      <div class="tl-desc">
+        <strong>关键环节！</strong>姚院原话：<br>
+        "第一步就是把这些产线完全数字孪生到仿真环境里，用到3D重建+生成式AI技术，<br>
+        基本上看不出以假乱真。然后在里面把 <strong>90% 左右的研发工作全部完成并测试完整</strong>，<br>
+        再到真实世界来做。"
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-title">Step 3: 产线微调 <span class="tag tag-il">模仿学习</span></div>
+      <div class="tl-desc">
+        在龙旗产线上用 VR 遥操作采集示教数据。<br>
+        张总原话："我们并不是所有工作内容都是用的真机强化学习，也做了行为素（行为克隆）的优化。"<br>
+        → IL 先保底，让机器人先会干活。
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-title">Step 4: 在线真机强化学习 <span class="tag tag-rl">强化学习</span></div>
+      <div class="tl-desc">
+        姚院原话："后训练里面还有一些在真实应用中做的强化学习，让它才能接近百分之百这种人的节拍。"<br>
+        → RL 针对高精度动作（如放入治具）做专项优化。<br>
+        → 新技能学习速度：<strong>1小时内学到99%以上的成功率</strong>。
+      </div>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="card-title">💡 关键认知：IL + RL 混合策略</div>
+    <div class="card-body">
+      <p>张总明确说 <strong>"不是所有动作都用真机强化学习"</strong>。实际是：</p>
+      <ul>
+        <li>基础动作（抓取、放置）→ 行为克隆（模仿学习）</li>
+        <li>高精度动作（放入治具的力控对位）→ 强化学习专项优化</li>
+        <li>固定动作（转身、移动）→ 规则控制</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 4. 8台机器人部署方案 ============ -->
+<div class="section">
+  <h2>🏭 4. 龙旗现场部署实况</h2>
+
+  <h3>4.1 现场配置</h3>
+  <p>根据新华社直播访谈，龙旗南昌工厂当前配置：</p>
+  <table>
+    <tr><th>项目</th><th>实际数据</th></tr>
+    <tr><td>机器人型号</td><td>精灵 G2（轮式半人形）</td></tr>
+    <tr><td>数量</td><td><strong>4台</strong>（直播出镜2台，另2台因保密未出镜）</td></tr>
+    <tr><td>工位</td><td>平板多媒体集成测试工站 — 下线前最后一道检测</td></tr>
+    <tr><td>作业方式</td><td>双臂协作：右手取新板→左手取旧板→右手放新板→左手分拣</td></tr>
+    <tr><td>与产线集成</td><td>与测试装备实时通信 + 传输轨道联调 + MES 数据上报</td></tr>
+    <tr><td>人机协作</td><td>NG品放入小窗口，人工定时收集复判</td></tr>
+  </table>
+
+  <h3>4.2 产出实绩</h3>
+  <div class="card-grid">
+    <div class="info-card">
+      <div class="card-title">峰值 UPH</div>
+      <div class="card-body" style="font-size:24px;font-weight:700;color:var(--primary);">376</div>
+    </div>
+    <div class="info-card">
+      <div class="card-title">均值 UPH</div>
+      <div class="card-body" style="font-size:24px;font-weight:700;color:var(--secondary);">~296</div>
+    </div>
+    <div class="info-card">
+      <div class="card-title">一次直通率</div>
+      <div class="card-body" style="font-size:24px;font-weight:700;color:var(--success);">99.91%</div>
+    </div>
+    <div class="info-card">
+      <div class="card-title">累计运行</div>
+      <div class="card-body" style="font-size:24px;font-weight:700;color:var(--accent);">144h+</div>
+    </div>
+  </div>
+
+  <h3>4.3 后续扩展计划</h3>
+  <table>
+    <tr><th>阶段</th><th>计划</th><th>时间预期</th></tr>
+    <tr><td>近期</td><td>龙旗厂内复制到更多同类产线</td><td>已启动</td></tr>
+    <tr><td>中期</td><td>扩展到其他平板型号、手机等品类</td><td>持续进行</td></tr>
+    <tr><td>远期</td><td>"一机多场景"——新场景1个月快速部署</td><td>持续推进</td></tr>
+  </table>
+  <p style="font-size:13px;color:var(--text-muted);">来源：龙旗机器人业务部总经理李龙、智元合伙人姚茂青直播访谈</p>
+</div>
+
+<!-- ============ 5. 项目实施计划 ============ -->
+<div class="section">
+  <h2>📅 5. 龙旗项目实际历程</h2>
+
+  <h3>5.1 真实时间线（来自直播访谈）</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="tl-title">2025.09 — 联合攻关小组成立</div>
+      <div class="tl-desc">
+        龙旗与智元成立联合项目组，启动上下料场景攻关。<br>
+        在智元实验室搭建模拟环境（仿真+真实）。
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-title">2025.12 下旬 — 初样到厂</div>
+      <div class="tl-desc">
+        样机运到龙旗南昌工厂，在副产线调试。<br>
+        周期 100+秒，远未达到产线要求。<br>
+        <strong>关键：</strong>在副产线上适应现场真实环境（光照、布局等）。
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-title">2026.01 初 — 节拍突破至 20+秒</div>
+      <div class="tl-desc">
+        约1-2个月优化迭代，从100+秒降至20+秒。
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-title">2026.03 前 — 节拍突破至 十几秒</div>
+      <div class="tl-desc">
+        达到人类水平，满足产线节拍要求。<br>
+        并线前一周：利用主产线闲时做连续压测（≥8小时稳定运行）。
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-title">2026.03.16 — 正式并线 🎯</div>
+      <div class="tl-desc">
+        全国首个具身智能主产线并线应用。<br>
+        24小时两班倒连续作业。
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-title">2026.06.29 — 新华社直播</div>
+      <div class="tl-desc">
+        累计运行 144h+，峰值376 UPH，均值296 UPH，直通率99.91%<br>
+        姚院宣布：新技能1小时内学到99%+，新场景约1个月部署。
+      </div>
+    </div>
+  </div>
+
+  <h3>5.2 部署方法论（姚院原话）</h3>
+  <div style="background:#f8fafc;border-left:4px solid var(--secondary);padding:14px;border-radius:4px;margin:12px 0;">
+    <p><strong>四步上产线：</strong></p>
+    <ol>
+      <li><strong>实验室仿真</strong> — 数字孪生，90%研发在仿真里完成</li>
+      <li><strong>副产线调试</strong> — 适应现场真实环境（光照、震动、布局）</li>
+      <li><strong>主产线压测</strong> — 利用产线闲时做连续8h+压力测试</li>
+      <li><strong>正式并线</strong> — 达到稳定性标准后上线</li>
+    </ol>
+  </div>
+
+  <h3>5.3 复制模式</h3>
+  <p>姚院和李龙共同描述的落地模式：</p>
+  <ul>
+    <li><strong>攻坚团队</strong>（智元+龙旗联合）：攻克新场景 → 成熟后移交运维</li>
+    <li><strong>运维团队</strong>（龙旗本地）：日常维护 + 监控 + 问题响应</li>
+    <li>新场景约 <strong>1个月</strong> 完成从启动到部署</li>
+  </ul>
+
+  <h3>5.4 最新发布：Genie Studio Agent</h3>
+  <p>直播前一天（2026.06.28），智元发布了 <strong>Genie Studio Agent</strong>——一站式作业流水线开发平台，用于：</p>
+  <ul>
+    <li>把模型技术、感知、导航、避障等模块组合在一起</li>
+    <li>高节拍、高成功率完成工业任务</li>
+    <li>降低新场景开发门槛</li>
+  </ul>
+</div>
+
+<!-- ============ 6. 风险与应对 ============ -->
+<div class="section">
+  <h2>⚠️ 6. 实战中暴露的风险与应对</h2>
+  <p>以下风险点来自直播访谈中张总和姚院的真实反馈：</p>
+  <table>
+    <tr><th>风险</th><th>实际情况</th><th>应对措施</th></tr>
+    <tr>
+      <td><strong>无线通信干扰</strong></td>
+      <td>机器人跟测试装备之间无线联通，现场干扰、信号丢包影响节拍</td>
+      <td>优化通讯协议 + 硬件冗余，已在解决中</td>
+    </tr>
+    <tr>
+      <td><strong>硬件扭矩/稳定性</strong></td>
+      <td>快速启动、急速刹停对底盘稳定性和关节扭矩提出高要求</td>
+      <td>通过OTA持续软件迭代，反推硬件优化</td>
+    </tr>
+    <tr>
+      <td><strong>产线保密</strong></td>
+      <td>3C产线保密要求严格，研发只能在有限条件下展开</td>
+      <td>先在副产线调试，仿真验证90%工作量</td>
+    </tr>
+    <tr>
+      <td><strong>系统间集成</strong></td>
+      <td>"制造现场和自身的系统需要融合"（张总原话）</td>
+      <td>联合攻关团队，制造企业+机器人公司紧密协作</td>
+    </tr>
+    <tr>
+      <td><strong>换型后再训练</strong></td>
+      <td>换产品类型需要重新适配</td>
+      <td>相似品类快速复用，1小时内学到99%+</td>
+    </tr>
+  </table>
+
+  <h3>6.2 姚院的核心观点</h3>
+  <div style="background:#f8fafc;border-left:4px solid var(--primary);padding:14px;border-radius:4px;margin:12px 0;">
+    <p><strong>"Beyond Algorithms"</strong> — 真正把机器人稳定部署在工业产线，涉及的东西非常多：</p>
+    <ul>
+      <li>稳定的硬件 + 机器间一致性 + 精密标定</li>
+      <li>不是单个模型解决所有问题，需要 Agent 系统</li>
+      <li>"像大语言模型需要 Agent 一样，机器人也需要 Agent 系统去调动不同子系统"</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ 7. 方案岗面试话术 ============ -->
+<div class="section">
+  <h2>🎤 7. 方案岗面试话术（基于直播实况）</h2>
+
+  <h3>面试官问："龙旗这个项目你怎么看？"</h3>
+  <div style="background:#f8fafc;border-left:4px solid var(--primary);padding:16px;border-radius:4px;margin:12px 0;">
+    <p style="font-style:italic;color:var(--text);">
+      "这是全国首个具身智能在 3C 主产线的落地案例。龙旗南昌工厂部署了 4 台精灵 G2，
+      在平板下线前的多媒体集成测试工站做上下料，2026 年 3 月 16 日正式并线，
+      截至 6 月底已累计运行 144 小时以上。"
+    </p>
+    <p style="font-style:italic;color:var(--text);">
+      "性能上，峰值 UPH 达到 376，均值约 296，一次直通率 99.91%，节拍已经做到十几秒，超越人类水平。
+      关键是从项目启动到正式并线用了约 6 个月——去年 9 月联合攻关，12 月样机到厂，
+      今年 1 月节拍从 100 多秒优化到 20 多秒，3 月前突破到十几秒。"
+    </p>
+    <p style="font-style:italic;color:var(--text);">
+      "技术架构分三层：底层是 G2 的稳定硬件+力控，中间层是 GO-2 大模型做端到端动作，
+      上层是 Genie Studio Agent 做任务调度和系统集成。训练不是纯 RL，而是 IL 先保底、
+      RL 做专项优化——张总明确说了'不是所有动作都用真机强化学习'。"
+    </p>
+    <p style="font-style:italic;color:var(--text);">
+      "最让我印象深刻的是姚院说的 'Beyond Algorithms'——真正上产线不只是算法问题，
+      还要硬件的稳定性、机器间的一致性、跟 MES 和测试装备的系统集成，
+      以及把 90% 的研发工作在仿真里先完成。"
+    </p>
+    <p style="font-style:italic;color:var(--text);">
+      "后续计划是先在龙旗厂内复制到更多同类产线，再扩展到手机等其他品类。
+      新技能 1 小时能学到 99% 以上，新场景约 1 个月完成部署。"
+    </p>
+  </div>
+
+  <div class="card-grid">
+    <div class="info-card">
+      <div class="card-title">🔑 关键数字</div>
+      <div class="card-body">
+        峰值 376 UPH · 均值 296 UPH · 99.91% 直通率<br>
+        十几秒节拍 · 144h+ 连续运行 · 1h 新技能学习
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="card-title">🧠 核心逻辑</div>
+      <div class="card-body">
+        IL 先保底 → RL 再优化（非所有动作都用 RL）<br>
+        仿真完成 90% 工作 → 副产线 → 主产线压测 → 并线
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="card-title">⚡ 差异化优势</div>
+      <div class="card-body">
+        新技能 1h 学会 · 新场景 1月部署<br>
+        全国首个主产线并线案例
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>本文档由 AGIBOT 项目学习笔记生成 · 仅供方案岗面试准备参考</p>
+  <p>数据来源: 新华社直播访谈字幕 (2026.06.29) · arXiv:2601.11404 (ACoT-VLA) · The Robot Report · agibot.com</p>
+  <p style="font-size:11px;margin-top:4px;">访谈嘉宾：龙旗科技张总/李龙 · 智元合伙人姚茂青 · 上海人工智能行业协会会长钟俊浩 · 新华社记者孙青</p>
+</div>
+
+</div>
+</body>
+</html>
