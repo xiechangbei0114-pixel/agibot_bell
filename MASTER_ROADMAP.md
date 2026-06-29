@@ -1,6 +1,6 @@
 # 🗺️ 具身智能实战路线图
 
-> 最后更新: 2026-06-24 | 目标: **智元方案岗**
+> 最后更新: 2026-06-29 | 目标: **智元方案岗**
 > 硬件: GTX 1060 6GB | WSL2+ROS2: ✅ 就绪 | 公司有智元真机
 > 状态: Wk1-2 ✅ | Wk3 🟡 理论通(实操跳过) | 进入Wk4-5 方案输出
 
@@ -51,7 +51,8 @@
 |:---|:---|
 | 🧠 理论 (12概念95%) | 机器人分类、四层架构、ROS3通信+AimRT、FK/IK、VLA大小脑、三大模型对比、仿真栈、RLvsIL、Sim2Real、冷启动三阶段、兜底金字塔、范式四阶段演进 |
 | 💻 代码 | `agibot_demo.py` `panda_move.py` `fk_ik_simulator.py` `simulate_vla.py` `panda_executor.py` `vla_cloud_bridge.py` `era3_vla_demo.py` |
-| 📦 资产 | 源码克隆 (gr00t/openpi/acot_vla/genie_sim)、方案框架、云端桥接、代码分析 |
+| 📦 资产 | 源码克隆 (genie_sim / openpi / ACoT-VLA / Genie-Envisioner)、方案框架、云端桥接、代码分析 |
+| 🏛️ AIMA 开源全景 | ✅ 下详「AIMA 架构与智元开源全景」 |
 | 🔧 环境 | WSL + ROS2 Humble + MoveIt2 + Gazebo 已就绪 |
 
 ### Week 3 (07.01-07.07) 🔜 翻车+实操冲刺
@@ -96,9 +97,44 @@
 
 ---
 
-## 🤔 你的 WSL2 能做什么？
+## 🏛️ AIMA 架构与智元开源全景（面试第10题素材）
 
-| 想做的事 | 可能 | 做法 |
+> AIMA = AI Machine Architecture，2026.06.09 发布，四个平台
+
+```
+AIMA 四大支柱
+├── 灵渠 Link-U OS     ← 操作系统，计划2026开源1.0（尚未发布）
+├── 灵心 LinkSoul      ← 交互智能体平台（未开源）
+├── 灵创 LinkCraft     ← 内容创作平台（未开源）
+└── 精灵 Genie Studio  ← 仿真引擎 → genie_sim ✅ 已开源
+```
+
+### 已开源到本地的资产
+
+| 仓库 | 路径 | 大小 | 说明 |
+|:---|:---|---:|:---|
+| **genie_sim** | `../01_AIMA_genie_sim_code/` | ~2GB | 仿真引擎+场景生成器+StreamVLN |
+| **genie_sim 轻量版** | `../02_genie_sim_lightweight/` | ~70MB | 裁剪版，不含资产纹理 |
+| **ACoT-VLA** | `../ACoT-VLA/` | 2.9M | CVPR 2026 — Action Chain-of-Thought for VLA |
+| **Genie-Envisioner** | `../Genie-Envisioner/` | 52M | 统一世界模型平台，操作推理 |
+
+### 智元其他已开源的仓库（AgibotTech GitHub）
+
+| 仓库 | 方向 | 面试价值 |
+|:---|:---|---:|
+| `agibot_x1_infer/train/hardware` | X1 人形机器人全套 | ⭐⭐ 了解生态即可 |
+| `GO-1 / GO-1 Air` (OpenDriveLab) | ViLLA 架构 VLA 模型 | ⭐⭐⭐⭐⭐ **面试核心** |
+| `ACoT-VLA` | VLA + Action Chain-of-Thought | ⭐⭐⭐⭐ 面试加分项 |
+| `Genie-Envisioner` | 世界模型 + 操作 | ⭐⭐⭐⭐ Sim2Real 话题 |
+| `EWMBench` | 世界模型评测 | ⭐⭐ 了解即可 |
+
+### 面试话术（10-15秒）
+
+> "智元的 AIMA 是行业首个开放的具身智能生态体系，包含灵渠OS、灵心、灵创、精灵四个平台。其中仿真引擎 genie_sim 已开源，VLA 模型 GO-1（基于 ViLLA 架构，IROS 2025 Finalist）也在 GitHub 和 HuggingFace 上可以下载权重。2026年灵渠OS也将开源。"
+
+---
+
+## 🤔 你的 WSL2 能做什么？
 |:---|:---:|:---|
 | Era 2: Panda 抓取 | ✅ 已能做 | `panda_move.py` |
 | Era 2: + 模拟相机 | 🟡 卡但能用 | Gazebo 相机插件 (WSL2无GPU加速) |
@@ -174,24 +210,33 @@
 ## 📁 项目结构
 
 ```
-AGIBOT/
-├── README.md                     # ← 你现在看的
-├── todo.md                       # 每日任务
-├── MASTER_ROADMAP.md             # ← 这个文件 (唯一路线图)
+AGIBOT/                            # E:\0_1493677\11_AGIBOT\agibot_bell\
+├── MASTER_ROADMAP.md              # ← 这个文件 (唯一路线图)
+├── todo.md                        # 每日任务
 │
-├── src/                          # 💻 自主代码
-│   ├── week_1/                   # ROS2 + Panda (agibot_demo, panda_move...)
-│   ├── week_2/                   # VLA仿真 (era3_vla_demo, vla_pipeline_sim...)
-│   ├── week_3~6/                 # 各周仿真脚本
-│   └── cloud_vla_bridge/         # 云端VLA桥接 (simulate_vla, panda_executor...)
+├── src/                           # 💻 自主代码
+│   ├── week_1/                    # ROS2 + Panda (agibot_demo, panda_move...)
+│   ├── week_2/                    # VLA仿真 (era3_vla_demo, vla_pipeline_sim...)
+│   ├── week_3~6/                  # 各周仿真脚本
+│   └── cloud_vla_bridge/          # 云端VLA桥接 (simulate_vla, panda_executor...)
 │
-├── docs/                         # 📚 文档
-│   ├── solutions/                # 敲门砖方案
-│   └── reference/                # 参考资料 + resume.md
+├── docs/                          # 📚 文档
+│   ├── solutions/                 # 敲门砖方案
+│   └── reference/                 # 参考资料 + resume.md
 │
-├── third_party/                  # 📦 第三方源码 (gr00t/openpi/acot_vla/genie_sim)
+├── third_party/                   # 📦 (当前为空，源码放在上层)
 │
-└── journal/                      # 📝 个人日志 (已gitignore)
+└── journal/                       # 📝 个人日志 (已gitignore)
+
+上层根目录 (E:\0_1493677\11_AGIBOT\) 的已克隆资产:
+├── 01_AIMA_genie_sim_code/        # genie_sim 完整版 (~2GB)
+├── 02_genie_sim_lightweight/      # genie_sim 轻量版 (~70MB)
+├── 03_lightweight_pack/           # 打包的轻量版 + openpi
+├── ACoT-VLA/                      # CVPR 2026 VLA+思维链 (2.9M)
+├── Genie-Envisioner/              # 世界模型平台 (52M)
+├── genie_sim_architecture.md      # 架构分析文档
+├── DataAgentParadigm.md           # 问数智能体范式
+└── AgentForm.md                   # Agent 形态笔记
 ```
 
 ---

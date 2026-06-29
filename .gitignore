@@ -12,8 +12,9 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# 第三方 VLA 源码（非自主开发）
-third_party/
+# 第三方源码 - 已集成的仓库各自有 third_party/.gitignore 管理
+third_party/.git/
+third_party/__pycache__/
 
 # 个人日志
 journal/
