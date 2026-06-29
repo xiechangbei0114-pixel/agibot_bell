@@ -299,22 +299,27 @@
   <h2>🧠 3. 技术栈与训练拆解</h2>
 
   <h3>3.1 姚院披露的三层技术架构</h3>
-  <div style="background:#1e293b;color:#e2e8f0;padding:20px;border-radius:8px;font-size:13px;overflow-x:auto;line-height:1.6;margin:12px 0;">
- ┌─────────────────────────────────────────────────────────────────────────┐
- │ ③ Agent系统 (Genie Studio Agent)                                       │
- │    与流水线通信 · 与测试装备信息交互 · 任务调度 · 异常恢复 · 错误处理    │
- │    2026.06.28 发布 — "一站式作业流水线开发平台"                          │
- ├─────────────────────────────────────────────────────────────────────────┤
- │ ② 算法层                                                               │
- │    ├── 具身大模型（GO-2）：端到端完成原子动作                             │
- │    ├── 预训练：海量数据训练基础能力                                       │
- │    ├── 后训练（微调）：产线特定场景适配                                   │
- │    └── 在线真机强化学习：接近100%成功率 + 人级节拍                       │
- ├─────────────────────────────────────────────────────────────────────────┤
- │ ① 硬件本体（精灵G2）                                                    │
- │    灵活全向底盘 · 26自由度 · 力矩传感器(力控) · 工业级可靠性             │
- │    100%车规级 · IP42 · 24小时连续作业                                   │
- └─────────────────────────────────────────────────────────────────────────┘</div>
+  <div style="display:flex;flex-direction:column;gap:0;margin:12px 0;border-radius:8px;overflow:hidden;border:1px solid #334155;">
+    <div style="background:#064e3b;padding:14px 18px;border-bottom:2px solid #0d9488;">
+      <div style="font-weight:700;color:#5eead4;font-size:14px;">③ Agent 系统（Genie Studio Agent）</div>
+      <div style="color:#ccfbf1;font-size:13px;margin-top:4px;">与流水线通信 · 与测试装备信息交互 · 任务调度 · 异常恢复 · 错误处理</div>
+      <div style="color:#5eead4;font-size:12px;margin-top:2px;">2026.06.28 发布 — "一站式作业流水线开发平台"</div>
+    </div>
+    <div style="background:#1e3a5f;padding:14px 18px;border-bottom:2px solid #3b82f6;">
+      <div style="font-weight:700;color:#93c5fd;font-size:14px;">② 算法层</div>
+      <ul style="color:#dbeafe;font-size:13px;margin:6px 0 0 18px;list-style-type:disc;">
+        <li><strong>具身大模型（GO-2）：</strong>端到端完成原子动作</li>
+        <li>预训练：海量数据训练基础能力</li>
+        <li>后训练（微调）：产线特定场景适配</li>
+        <li><strong>在线真机强化学习：</strong>接近100%成功率 + 人级节拍</li>
+      </ul>
+    </div>
+    <div style="background:#1e293b;padding:14px 18px;">
+      <div style="font-weight:700;color:#cbd5e1;font-size:14px;">① 硬件本体（精灵 G2）</div>
+      <div style="color:#e2e8f0;font-size:13px;margin-top:4px;">灵活全向底盘 · 26自由度 · 力矩传感器（力控） · 工业级可靠性</div>
+      <div style="color:#94a3b8;font-size:12px;">100%车规级 · IP42 · 24小时连续作业</div>
+    </div>
+  </div>
   <p style="font-size:13px;color:var(--text-muted);">来源：智元合伙人姚茂青在新华社直播访谈中的原话</p>
 
   <h3>3.2 到底学什么？</h3>
