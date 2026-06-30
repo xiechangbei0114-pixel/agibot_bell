@@ -14,7 +14,15 @@ Thumbs.db
 
 # 第三方源码 - 已集成的仓库各自有 third_party/.gitignore 管理
 third_party/.git/
+third_party/*/.git/
+third_party/*/__pycache__/
 third_party/__pycache__/
 
 # 个人日志
 journal/
+
+# 第三方源码（太大，不推送，自行clone）
+third_party/
+
+# IDE缓存
+.codegraph/

@@ -1,98 +1,194 @@
-# AGIBOT · 具身智能方案岗实战
+# 🎯 AGIBOT · 具身智能方案岗实战
 
-> 目标: 智元方案岗 | 硬件: GTX 1060 6GB | 启动: 2026.06.17
+> **目标**: 智元方案岗 | **硬件**: GTX 1060 6GB | **启动**: 2026.06.17 (已学 **13天**)
+> **策略**: 先练手面 2-3 家 → 再面智元
 
 ---
 
-## 📂 项目结构
+## 📍 现在在哪
+
+```
+06.17         06.30         07.14            07.21           07.28           08.04+
+ │              │             │                │               │               │
+ ┌──────────────┴─────────────┴────────────────┴───────────────┴───────────────┐
+ │  理论打底     │  旗舰项目    │ PMP出成绩 🏁    │ 练手面试        │ 目标面试      │
+ │  + 源码精读   │  + 话术录音  │ 投宇树/星动纪元  │ 宇树/星动/银河   │ 智元/Figure/1X│
+ │              │              │                │               │               │
+ │  ✅ Wk1-2    │  🔴 现在     │  🟢 07.14      │  🟢 07.21      │  🟢 07.28     │
+ └──────────────┴──────────────┴────────────────┴───────────────┴───────────────┘
+```
+
+### 已完成 (13天产出)
+
+| 类别 | 完成度 |
+|:---|:---:|
+| 🧠 12核心概念 | ✅ 95% |
+| 💻 自主代码 | 18个 `.py` |
+| 🔧 环境 | WSL+ROS2+MoveIt2+Gazebo ✅ |
+| 🔍 源码精读 | Genie Sim ~1500行核心代码 |
+| 📄 方案文档 | 3场景 + 上下料 + ROI分析 + 龙旗方案 |
+| 🗣️ 面试话术 | 12题完整脚本 + 优化分析 + 引语素材 |
+| 🎬 实操跑通 | Isaac Sim+G2、OpenPI+Genie Sim VLA推理 |
+
+---
+
+## 🔗 四大工作流 — 快速导航
+
+| 工作流 | 入口 | 内容 |
+|:---|---:|:---|
+| 🧠 **A 理论体系** | [`docs/workflows/A_foundation/`](docs/workflows/A_foundation/INDEX.md) | 12概念、范式演进、大小脑架构、模型对比 |
+| 🔧 **B 实操流水线** | [`docs/workflows/B_hands_on/`](docs/workflows/B_hands_on/INDEX.md) | ROS2→MoveIt2→VLA→Genie Sim源码精读 |
+| 📄 **C 方案产出** | [`docs/workflows/C_solutions/`](docs/workflows/C_solutions/INDEX.md) | 3场景方案 + ROI + 作品集 + 现场实录 |
+| 🗣️ **D 面试武器** | [`docs/workflows/D_interview/`](docs/workflows/D_interview/INDEX.md) | 12题话术 + 简历 + JD分析 + 引语素材 |
+
+---
+
+## 🎯 核心策略
+
+| 角色 | 公司 | 时间 | 目的 |
+|:---:|:---|:---:|:---|
+| 🔵 **练手** | 宇树 → 星动纪元 → 银河通用 | 07.14起投 | 熟悉面试节奏、查漏补缺 |
+| 🟢 **目标** | **智元** 🎯 → Figure → 1X | 07.25起投 | 火力全开 |
+| 🟡 **备选** | 魔法原子 / 傅利叶 / 逐际动力 | 穿插海投 | 保底 |
+
+---
+
+## 📅 投递时间线
+
+### PMP 出结果前冲刺 (06.30→07.14)
+
+```
+P0 ─ 旗舰项目完工 (7天)
+├── Era 2 流水线跑通 (YOLO→Topic→WSL→MoveIt2→Panda)
+├── Era 3 模拟VLA (simulate_vla + panda_executor)
+├── 四级兜底 (VLA→视觉重试→力控→报警)
+└── Demo录屏 + 架构README
+
+P0 ─ 12题话术录音 (每天3题)
+├── 重点: Q1/Q3/Q4/Q10/Q12
+└── 手机录音 → 听自己讲 → 迭代
+```
+
+### PMP 出结果后投递
+
+| 日期 | 行动 |
+|:---:|:---|
+| **07.14** 🏁 | PMP出成绩 → 更新简历 → 投宇树、星动纪元 |
+| **07.20** | 投银河通用、魔法原子、傅利叶、逐际动力 |
+| **07.21那周** | 🟢 练手面试 (宇树→星动→银河) |
+| **07.25** | 投 **智元** 🎯、Figure AI、1X Tech |
+| **07.28那周** | 🟢 目标面试 |
+| **08.04+** | 持续面试 + 收 Offer |
+
+### 分公司时间预估
+
+| 公司 | 角色 | 投递 | 一面 | 预计结果 |
+|:---|:---:|:---:|:---:|:---:|
+| **宇树** | 练手 | 07.14 | 07.21那周 | 08.04前 |
+| **星动纪元** | 练手 | 07.14 | 07.21那周 | 08.04前 |
+| **银河通用** | 练手 | 07.20 | 07.28那周 | 08.11前 |
+| **智元** 🎯 | **目标** | **07.25** | 07.28-08.01 | 08.18前 |
+| **Figure AI** | 目标 | 07.25 | 08.04那周 | 08.25前 |
+| **1X Tech** | 目标 | 07.28 | 08.04那周 | 08.25前 |
+
+---
+
+## 🚩 你的核心差异
+
+```
+你有但竞争对手(985应届)没有:         对方有你没有:
+✅ 歌尔 3 年产线 (懂客户要什么)         ❌ 985 学历
+✅ 工业视觉落地 (YOLO/SuperPoints)     ❌ 论文发表
+✅ Agent 产品 0→1                      ❌ 能调模型
+✅ PMP (7月出) + 跨国交付
+✅ 公司有智元真机
+```
+
+### 三个缝合故事 (面试 Q11)
+
+| 经历 | 翻译成 | 对应场景 |
+|:---|:---|---:|
+| AGV+多相机仓储盘点 | 感知→决策→执行→MES闭环 = 冷启动策略 | **A 仓储物流** |
+| 产线Agent产品 | 工作流约束+轻量化模型兜底 = OmniAgent编排 | **B 制造业** |
+| 越南现场用胶带+光纤打光 | Beyond Algorithms = 物理/流程手段降本 | **C 农业/特殊** |
+
+---
+
+## ✅ 实操优先级
+
+> 最后更新：2026-06-30
+
+### 🔴 P0 · 旗舰项目冲刺 (07.01-07.12)
+
+| # | 事项 | 说明 | 截止 | 状态 |
+|:---:|:---|---:|:---:|:---:|
+| 1 | **Era 2 流水线跑通** | Windows YOLO→Topic→WSL→MoveIt2→Panda | 07.07 | ⬜ |
+| 2 | **Era 3 模拟VLA跑通** | simulate_vla + panda_executor | 07.07 | ⬜ |
+| 3 | **四级兜底Demo** | VLA→视觉重试→力控→报警 整合 | 07.10 | ⬜ |
+| 4 | **Demo录屏+README** | 手机/OBS录屏，写架构说明 | 07.12 | ⬜ |
+| 5 | **12题话术录音** | 每天3题，手机录音自查，重点Q1/Q3/Q4/Q10/Q12 | 07.12 | ⬜ |
+
+### 🟡 P1 · 方案整合 (07.10-07.14)
+
+| # | 事项 | 截止 | 状态 |
+|:---:|:---|---:|:---:|
+| 1 | PMP出成绩 → 更新简历 (+PMP证书) | **07.14** | ⏳ |
+
+### 🟢 P2 · 投递节点 (07.14起)
+
+| # | 事项 | 日期 | 状态 |
+|:---:|:---|---:|:---:|
+| 1 | 投递 宇树、星动纪元 | 07.14 | ⏳ |
+| 2 | 投递 银河通用、备选3家 | 07.20 | ⏳ |
+| 3 | 投递 **智元** 🎯 | **07.25** | ⏳ |
+| 4 | 投递 Figure AI、1X | 07.25 | ⏳ |
+
+### 🛂 签证 & 出行
+
+| # | 事项 | 状态 |
+|:---:|:---|---:|
+| 1 | 英国签证材料准备 + 流水 | ⬜ |
+| 2 | 法国签证材料准备 | ⬜ |
+
+---
+
+## 📁 项目结构
 
 ```
 AGIBOT/
+├── README.md                         ← 📍 本文件 (唯一纲领 + 任务看板)
 │
-├── README.md                       # ← 你现在看的
-├── todo.md                         # 任务清单 (每日更新)
-├── 8week_plan_embodied_ai.md       # 8周学习计划 (主计划)
-├── MASTER_ROADMAP.md               # 完整路线图 (补充参考)
+├── docs/workflows/                   ← 📚 四大工作流 (唯一内容目录)
+│   ├── A_foundation/                 ← 🧠 理论体系
+│   ├── B_hands_on/                   ← 🔧 实操流水线
+│   ├── C_solutions/                  ← 📄 方案产出
+│   └── D_interview/                  ← 🗣️ 面试武器
 │
-├── docs/                           # 📚 文档中心
-│   ├── solutions/                  #    敲门砖方案
-│   │   └── solution_loading_unloading.md
-│   └── reference/                  #    参考资料
-│       ├── Genie Sim User Guide.html
-│       ├── high_roi_embodied_ai_scenarios.md
-│       ├── agibot_feasibility.md
-│       └── resume.md
+├── src/                              ← 💻 代码 (按功能)
+│   ├── era2_pipeline/                ← Era 2 视觉→ROS2→MoveIt2
+│   ├── era3_vla/                     ← Era 3 VLA推理 + 云端桥接
+│   └── tools/                        ← ROI/可视化/诊断/标定
 │
-├── src/                            # 💻 自己写的代码
-│   ├── week_1/                     #    ROS2 + Panda 控制
-│   │   ├── agibot_demo.py          #    产线Topic通信
-│   │   ├── panda_move.py           #    Panda MoveIt2控制
-│   │   ├── fk_ik_simulator.py      #    FK/IK仿真
-│   │   └── two_link_arm_sim.html   #    二连杆可视化
-│   ├── week_2/                     #    VLA仿真 + 工具
-│   │   ├── vla_pipeline_sim.py     #    VLA流水线量化对比
-│   │   ├── data_flywheel_sim.py    #    冷启动数据飞轮
-│   │   ├── era3_vla_demo.py        #    Era 3 VLA端到端(numpy)
-│   │   └── era3_vla_demo_lite.py   #    Era 3 VLA端到端(纯Python)
-│   ├── week_3/                     #    VLA翻车诊断
-│   │   └── vla_failure_diag.py
-│   ├── week_4/
-│   │   └── roi_calculator.py       #    ROI计算器
-│   ├── week_5/
-│   │   └── scenario_visualizer.py  #    场景可视化
-│   ├── week_6/
-│   │   └── integration_checker.py  #    整合检查
-│   └── cloud_vla_bridge/           #    ☁️ 云端VLA→本地Panda
-│       ├── simulate_vla.py         #    VLA推理模拟器
-│       ├── panda_executor.py       #    机械臂执行器(+兜底)
-│       ├── vla_cloud_bridge.py     #    云端桥接(WebSocket)
-│       └── deploy_to_autodl.md     #    云端部署指南
+├── third_party/                      ← 第三方源码克隆
+│   ├── genie_sim/     (335M)
+│   ├── gr00t/         (1.2G)
+│   ├── acot_vla/      (2.9M)
+│   ├── openpi/        (2.5M)
+│   └── Genie-Envisioner/ (1.4M)
 │
-├── third_party/                    # 📦 第三方VLA源码(已克隆)
-│   ├── gr00t/                      #    NVIDIA GR00T N1.7
-│   ├── openpi/                     #    Pi0/Pi0.5
-│   ├── acot_vla/                   #    智元ACoT-VLA
-│   └── genie_sim/                  #    智元Genie Sim
-│
-├── journal/                        # 📝 个人日志
-│   └── journal.md
-│
-└── .vscode/                        # ⚙️ VS Code配置
-    └── settings.json
+└── journal/                          ← 个人日志 (已gitignore)
 ```
 
-## 🔗 核心架构
+---
 
-```
-Windows (你的老本行)                       WSL (ROS2)
-─────────────────────                     ────────────
-YOLO / OpenCV                            Panda MoveIt2
-     │                                        │
-     └── ROS2 Topic ──────────────────────────▶
-         /parts_detected                      Gazebo仿真
-         /vla_pose
-         /mes_report
-         /vla_inference_log
-```
+## 🔗 关联文档
 
-## 🎯 8周总目标
-
-```
-Wk1-2 理论打底 → Wk3 实操冲刺 → Wk4-5 方案输出 → Wk6-7 打磨面试 → Wk8 投递
-06.17-06.30      07.01-07.07     07.08-07.21     07.22-08.04    08.05-08.11
-✅ 95%           ⬜              ⬜               ⬜             ⬜
-```
-
-## 📊 当前进度 (2026-06-24)
-
-| 领域 | 进度 | 说明 |
-|:---|:---:|:---|
-| 理论12概念 | ✅ 95% | 知识自检已补完 |
-| WSL+ROS2环境 | ✅ 就绪 | Gazebo + MoveIt2 可跑 |
-| Era 3 VLA仿真 | ✅ 已创建 | era3_vla_demo.py / era3_vla_demo_lite.py |
-| 模拟VLA→Panda | 📝 待跑通 | simulate_vla.py + panda_executor.py |
-| Era 2视觉流水线 | 📝 待做 | Window图→YOLO→Topic→WSL |
-| 方案PPT | 📝 Week4-5 | solution_loading_unloading.md 已就绪 |
-
-> 完整学习计划 → `MASTER_ROADMAP.md`
-> 每日任务 → `todo.md`
+| 内容 | 链接 |
+|:---|---:|
+| 📄 方案作品集（完整版） | `docs/workflows/C_solutions/SOLUTION_PORTFOLIO.md` |
+| 🗣️ 面试话术完整版 | `docs/workflows/D_interview/INTERVIEW_SCRIPTS.md` |
+| 🧠 12概念精要 | `docs/workflows/A_foundation/12_concepts.md` |
+| 🎮 Genie Sim源码精读 | `docs/workflows/B_hands_on/genie_sim_study_guide.md` |
+| 📋 每日任务 | 见本文件「实操优先级」节 |
+| 🏭 龙旗方案可视化 | `docs/workflows/C_solutions/g2_longcheer_solution.html` |
+| ☁️ 云端部署指南 | `src/era3_vla/cloud_bridge/deploy_to_autodl.md` |
