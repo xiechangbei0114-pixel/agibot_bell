@@ -36,10 +36,10 @@
 
 | 工作流 | 入口 | 内容 |
 |:---|---:|:---|
-| 🧠 **A 理论体系** | [`docs/workflows/A_foundation/`](docs/workflows/A_foundation/INDEX.md) | 12概念、范式演进、大小脑架构、模型对比 |
-| 🔧 **B 实操流水线** | [`docs/workflows/B_hands_on/`](docs/workflows/B_hands_on/INDEX.md) | ROS2→MoveIt2→VLA→Genie Sim源码精读 |
-| 📄 **C 方案产出** | [`docs/workflows/C_solutions/`](docs/workflows/C_solutions/INDEX.md) | 3场景方案 + ROI + 作品集 + 现场实录 |
-| 🗣️ **D 面试武器** | [`docs/workflows/D_interview/`](docs/workflows/D_interview/INDEX.md) | 12题话术 + 简历 + JD分析 + 引语素材 |
+| 🧠 **A 理论体系** | [`A_foundation/`](A_foundation/README.md) | 12概念 → 追问预备 → 行业数据 |
+| 🔧 **B 实操流水线** | [`B_hands_on/`](B_hands_on/README.md) | Era 2/3 I/O链路 → 源码精读 → 仿真 |
+| 📄 **C 方案产出** | [`C_solutions/`](C_solutions/README.md) | 三场景方案+作品集+龙旗案例+竞品对比 |
+| 🗣️ **D 面试武器** | [`D_interview/`](D_interview/README.md) | 12题话术+面经+STAR+追问预备 |
 
 ---
 
@@ -158,11 +158,10 @@ P0 ─ 12题话术录音 (每天3题)
 AGIBOT/
 ├── README.md                         ← 📍 本文件 (唯一纲领 + 任务看板)
 │
-├── docs/workflows/                   ← 📚 四大工作流 (唯一内容目录)
-│   ├── A_foundation/                 ← 🧠 理论体系
-│   ├── B_hands_on/                   ← 🔧 实操流水线
-│   ├── C_solutions/                  ← 📄 方案产出
-│   └── D_interview/                  ← 🗣️ 面试武器
+├── A_foundation/                     ← 🧠 理论体系 (概念→追问→数据)
+├── B_hands_on/                       ← 🔧 实操流水线 (Era 2/3 I/O→源码)
+├── C_solutions/                      ← 📄 方案产出 (作品集→场景→对比)
+├── D_interview/                      ← 🗣️ 面试武器 (话术→面经→追问)
 │
 ├── src/                              ← 💻 代码 (按功能)
 │   ├── era2_pipeline/                ← Era 2 视觉→ROS2→MoveIt2
